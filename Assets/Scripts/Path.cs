@@ -2,17 +2,15 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Path : MonoBehaviour 
+public class Path
 {
 
-	private List<Checkpoint> _listOfCheckpoints;
-	private int _playerID;
-	private int _currentPosition;
+	private List<Checkpoint> _listOfCheckpoints;	
+	private int _currentPosition;	
 
-	
-	public int PlayerID
+	public void AddCheckpoint(Checkpoint checkpoint)
 	{
-		get { return _playerID; }
+		_listOfCheckpoints.Add(checkpoint);
 	}
 
 }

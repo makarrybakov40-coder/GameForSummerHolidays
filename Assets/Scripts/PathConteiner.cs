@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class PathConteiner : MonoBehaviour
 {
-	private Dictionary<int ,Path> _pathList;
-	private List<int> _playerIDs;
-
-	private Checkpoint[] _checkpoints;
+	private Dictionary<int, Path> _pathList;		
 
 	public int PathList
 	{
@@ -18,13 +15,21 @@ public class PathConteiner : MonoBehaviour
 	private void Start()
 	{
 
-		
+		FindAndCreatePaths();
 
 	}
 
-	public void FindCheckpoints()
+	public void FindAndCreatePaths()
 	{
-		_checkpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
+		Checkpoint[] _checkpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
+
+		foreach (Checkpoint checkpoint in _checkpoints) 
+		{
+			_pathList.TryAdd(checkpoint.GetPlayerID(), new Path());
+			_pathList[checkpoint.GetPlayerID()].AddCheckpoint(checkpoint);						
+		}
+
+		Debug.Log(_pathList.Count);
 	}
 
 
