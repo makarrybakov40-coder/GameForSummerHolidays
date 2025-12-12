@@ -3,91 +3,51 @@ using UnityEngine;
 
 public class PathCircle : MonoBehaviour
 {
-    [Header("Настройки круга")]
     public int circleNumber = 1;
-    public Color normalColor = Color.white;
-    public Color hoverColor = Color.yellow;
-    public Color clickColor = Color.green;
+    public int pathIndex = 0;
 
-    private SpriteRenderer spriteRenderer;
-    private bool isMouseOver = false;
+    private SpriteRenderer sprite;
+    private Color normalColor = Color.white;
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
+        sprite = GetComponent<SpriteRenderer>();
+
+        // Разные цвета для разных путей
+        if (sprite != null)
         {
-            spriteRenderer.color = normalColor;
+            float hue = pathIndex * 0.3f;
+            normalColor = Color.HSVToRGB(hue, 0.3f, 1f);
+            sprite.color = normalColor;
         }
 
-        // Добавляем текст с номером
+        // Номер круга
         CreateNumberText();
-    }
-
-    void OnMouseEnter()
-    {
-        isMouseOver = true;
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = hoverColor;
-        }
-    }
-
-    void OnMouseExit()
-    {
-        isMouseOver = false;
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = normalColor;
-        }
-    }
-
-    void OnMouseDown()
-    {
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = clickColor;
-        }
-    }
-
-    void OnMouseUp()
-    {
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = isMouseOver ? hoverColor : normalColor;
-        }
     }
 
     void CreateNumberText()
     {
-        // Создаем GameObject для текста
-        GameObject textObject = new GameObject("CircleNumber");
-        textObject.transform.SetParent(transform);
-        textObject.transform.localPosition = Vector3.zero;
+        GameObject textObj = new GameObject("Number");
+        textObj.transform.SetParent(transform);
+        textObj.transform.localPosition = Vector3.zero;
 
-        // Добавляем компонент TextMesh
-        TextMesh textMesh = textObject.AddComponent<TextMesh>();
-        textMesh.text = circleNumber.ToString();
-        textMesh.fontSize = 20;
-        textMesh.characterSize = 0.1f;
-        textMesh.anchor = TextAnchor.MiddleCenter;
-        textMesh.alignment = TextAlignment.Center;
-        textMesh.color = Color.black;
+        TextMesh text = textObj.AddComponent<TextMesh>();
+        text.text = circleNumber.ToString();
+        text.fontSize = 20;
+        text.characterSize = 0.05f;
+        text.color = Color.black;
+        text.anchor = TextAnchor.MiddleCenter;
 
-        // Настройка размера
-        textObject.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+        textObj.transform.localScale = Vector3.one * 0.5f;
     }
 
-    // Метод для установки номера
-    public void SetCircleNumber(int number)
+    void OnMouseEnter()
     {
-        circleNumber = number;
+        if (sprite != null) sprite.color = Color.yellow;
+    }
 
-        // Обновляем текст
-        TextMesh textMesh = GetComponentInChildren<TextMesh>();
-        if (textMesh != null)
-        {
-            textMesh.text = number.ToString();
-        }
+    void OnMouseExit()
+    {
+        if (sprite != null) sprite.color = normalColor;
     }
 }

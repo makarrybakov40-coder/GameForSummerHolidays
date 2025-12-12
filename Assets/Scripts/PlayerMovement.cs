@@ -1,108 +1,126 @@
 // PlayerController.cs
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Настройки движения")]
-    public float moveSpeed = 5f;
-    public float rotationSpeed = 10f;
+    [Header("Настройки")]
+    public float moveSpeed = 3f;
+    public bool canMoveBack = true;
 
-    [Header("Ссылки")]
-    public List<Transform> pathPoints = new List<Transform>();
+    [Header("Данные игрока")]
+    public int playerNumber = 1;
+    public Color playerColor = Color.white;
 
-    // Текущее состояние
-    private int currentTargetIndex = 0;
-    private Vector3 targetPosition;
-    private bool isMoving = false;
+    // Состояние
+    public bool isMoving { get; private set; }
+    public int currentCircle { get; private set; }
+
+    // Путь
+    private List<Transform> path = new List<Transform>();
+    private SpriteRenderer sprite;
 
     void Start()
     {
-        if (pathPoints.Count > 0)
+        sprite = GetComponent<SpriteRenderer>();
+        if (sprite != null) sprite.color = playerColor;
+        currentCircle = 0;
+    }
+
+    public void SetPath(List<Transform> newPath)
+    {
+        path = newPath;
+        if (path.Count > 0)
         {
-            transform.position = pathPoints[0].position;
-            currentTargetIndex = 0;
+            transform.position = path[0].position;
+            currentCircle = 0;
         }
     }
 
-    void Update()
+    public void HandleClick()
     {
-        // Обработка клика мышью
-        if (Input.GetMouseButtonDown(0))
-        {
-            HandleMouseClick();
-        }
+        if (isMoving) return;
 
-        // Движение к цели
-        if (isMoving)
-        {
-            MoveToTarget();
-        }
-    }
-
-    void HandleMouseClick()
-    {
+        // Проверяем клик по кругу
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
         if (hit.collider != null)
         {
             PathCircle circle = hit.collider.GetComponent<PathCircle>();
             if (circle != null)
             {
-                // Находим индекс целевого круга
-                int targetIndex = pathPoints.IndexOf(circle.transform);
-
-                if (targetIndex > currentTargetIndex)
+                // Находим индекс круга в пути
+                int targetIndex = path.IndexOf(circle.transform);
+                if (targetIndex != -1 && targetIndex != currentCircle)
                 {
-                    currentTargetIndex = targetIndex;
-                    targetPosition = pathPoints[currentTargetIndex].position;
-                    isMoving = true;
+                    // Проверяем можно ли туда идти
+                    if (canMoveBack || targetIndex > currentCircle)
+                    {
+                        StartCoroutine(MoveToCircle(targetIndex));
+                    }
                 }
             }
         }
     }
 
-    void MoveToTarget()
+    IEnumerator MoveToCircle(int targetIndex)
     {
-        // Движение к цели
-        Vector3 direction = (targetPosition - transform.position).normalized;
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        isMoving = true;
 
-        // Поворот в направлении движения
-        if (direction != Vector3.zero)
+        // Определяем направление
+        int step = (targetIndex > currentCircle) ? 1 : -1;
+
+        // Двигаемся по одному кругу
+        while (currentCircle != targetIndex)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            int nextCircle = currentCircle + step;
+
+            // Двигаемся к следующему кругу
+            Vector3 startPos = transform.position;
+            Vector3 endPos = path[nextCircle].position;
+            float distance = Vector3.Distance(startPos, endPos);
+            float time = distance / moveSpeed;
+            float elapsed = 0f;
+
+            while (elapsed < time)
+            {
+                transform.position = Vector3.Lerp(startPos, endPos, elapsed / time);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            // Точно встаем на круг
+            transform.position = endPos;
+            currentCircle = nextCircle;
+
+            // Минимальная пауза на круге
+            yield return new WaitForSeconds(0.1f);
         }
 
-        // Проверка достижения цели
-        float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
-        if (distanceToTarget < 0.1f)
+        isMoving = false;
+
+        // Проверяем победу
+        if (currentCircle == path.Count - 1)
         {
-            transform.position = targetPosition;
-            isMoving = false;
+            Debug.Log($"Игрок {playerNumber} победил!");
         }
     }
 
-    // Метод для установки пути (вызывается из PathManager)
-    public void SetPath(List<Transform> points)
+    // Для телепортации (например, при спец-кругах)
+    public void TeleportToCircle(int circleIndex)
     {
-        pathPoints = points;
-        if (pathPoints.Count > 0)
+        if (circleIndex >= 0 && circleIndex < path.Count)
         {
-            transform.position = pathPoints[0].position;
+            transform.position = path[circleIndex].position;
+            currentCircle = circleIndex;
         }
     }
 
-    // Метод для принудительной установки позиции
-    public void SetPositionToCircle(int circleIndex)
+    void OnDrawGizmos()
     {
-        if (circleIndex >= 0 && circleIndex < pathPoints.Count)
-        {
-            currentTargetIndex = circleIndex;
-            transform.position = pathPoints[circleIndex].position;
-            isMoving = false;
-        }
+        Gizmos.color = playerColor;
+        Gizmos.DrawWireSphere(transform.position, 0.3f);
     }
 }
