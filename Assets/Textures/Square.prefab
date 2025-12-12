@@ -103,14 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5872d9a2653bcaf4e85fb1956aefbdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
-  rotationSpeed: 10
+  moveSpeed: 7
+  rotationSpeed: 200
+  delayBetweenPoints: 0
+  canMoveBackwards: 1
+  playerSprite: {fileID: 7482667652216324306, guid: a818ef9f907e3d245b102817671caa9d, type: 3}
+  selectionIndicator: {fileID: 0}
   pathPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
