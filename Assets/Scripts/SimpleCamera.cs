@@ -1,26 +1,43 @@
-// SimpleCamera.cs
+// SimpleCameraController.cs
+using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleCamera : MonoBehaviour
+public class SimpleCameraController : MonoBehaviour
 {
-    public Transform[] players;
-    public float smoothSpeed = 0.5f;
+    public List<Transform> playersToFollow;
+    public float smoothSpeed = 5f;
     public Vector3 offset = new Vector3(0, 0, -10);
 
     void LateUpdate()
     {
-        if (players == null || players.Length == 0) return;
+        if (playersToFollow == null || playersToFollow.Count == 0) return;
 
-        // Средняя позиция всех игроков
-        Vector3 center = Vector3.zero;
-        foreach (Transform player in players)
+        // Находим среднюю позицию всех игроков
+        Vector3 centerPosition = Vector3.zero;
+        int activePlayers = 0;
+
+        foreach (Transform player in playersToFollow)
         {
-            if (player != null) center += player.position;
+            if (player != null)
+            {
+                centerPosition += player.position;
+                activePlayers++;
+            }
         }
-        center /= players.Length;
 
-        // Плавное движение камеры
-        Vector3 targetPosition = center + offset;
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
+        if (activePlayers > 0)
+        {
+            centerPosition /= activePlayers;
+
+            // Плавно двигаем камеру
+            Vector3 desiredPosition = centerPosition + offset;
+            Vector3 smoothedPosition = Vector3.Lerp(
+                transform.position,
+                desiredPosition,
+                smoothSpeed * Time.deltaTime
+            );
+
+            transform.position = smoothedPosition;
+        }
     }
 }

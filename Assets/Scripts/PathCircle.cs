@@ -3,30 +3,45 @@ using UnityEngine;
 
 public class PathCircle : MonoBehaviour
 {
-    [Header("Настройки круга")]
+    [Header("Настройки")]
     public int circleNumber = 1;
     public Color normalColor = Color.white;
     public Color hoverColor = Color.yellow;
-    public Color clickColor = Color.green;
 
     private SpriteRenderer spriteRenderer;
-    private bool isMouseOver = false;
+    private Color originalColor;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
         {
-            spriteRenderer.color = normalColor;
+            originalColor = spriteRenderer.color;
         }
 
-        // Добавляем текст с номером
+        // Создаем текст с номером
         CreateNumberText();
+    }
+
+    void CreateNumberText()
+    {
+        GameObject textObj = new GameObject("Number");
+        textObj.transform.SetParent(transform);
+        textObj.transform.localPosition = new Vector3(0, 0, -0.1f);
+
+        TextMesh textMesh = textObj.AddComponent<TextMesh>();
+        textMesh.text = circleNumber.ToString();
+        textMesh.fontSize = 20;
+        textMesh.characterSize = 0.05f;
+        textMesh.color = Color.black;
+        textMesh.anchor = TextAnchor.MiddleCenter;
+        textMesh.alignment = TextAlignment.Center;
+
+        textObj.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
     }
 
     void OnMouseEnter()
     {
-        isMouseOver = true;
         if (spriteRenderer != null)
         {
             spriteRenderer.color = hoverColor;
@@ -35,55 +50,17 @@ public class PathCircle : MonoBehaviour
 
     void OnMouseExit()
     {
-        isMouseOver = false;
         if (spriteRenderer != null)
         {
-            spriteRenderer.color = normalColor;
+            spriteRenderer.color = originalColor;
         }
     }
 
-    void OnMouseDown()
-    {
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = clickColor;
-        }
-    }
-
-    void OnMouseUp()
-    {
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = isMouseOver ? hoverColor : normalColor;
-        }
-    }
-
-    void CreateNumberText()
-    {
-        // Создаем GameObject для текста
-        GameObject textObject = new GameObject("CircleNumber");
-        textObject.transform.SetParent(transform);
-        textObject.transform.localPosition = Vector3.zero;
-
-        // Добавляем компонент TextMesh
-        TextMesh textMesh = textObject.AddComponent<TextMesh>();
-        textMesh.text = circleNumber.ToString();
-        textMesh.fontSize = 20;
-        textMesh.characterSize = 0.1f;
-        textMesh.anchor = TextAnchor.MiddleCenter;
-        textMesh.alignment = TextAlignment.Center;
-        textMesh.color = Color.black;
-
-        // Настройка размера
-        textObject.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
-    }
-
-    // Метод для установки номера
-    public void SetCircleNumber(int number)
+    // Метод для установки номера (можно вызывать вручную)
+    public void SetNumber(int number)
     {
         circleNumber = number;
 
-        // Обновляем текст
         TextMesh textMesh = GetComponentInChildren<TextMesh>();
         if (textMesh != null)
         {
