@@ -16,64 +16,21 @@ public class PlayerMovement : MonoBehaviour
     public bool canMoveBackwards = true;
 >>>>>>> 9f0d800e9c1bd3c22d260225912622676d7dd4c5
 
-    [Header("Данные игрока")]
-    public int playerNumber = 1;
-    public Color playerColor = Color.white;
+    Player player;
 
-<<<<<<< HEAD
-    // Состояние
-    public bool isMoving { get; private set; }
-    public int currentCircle { get; private set; }
+    private List<Transform> pathPoints;
 
-    // Путь
-    private List<Transform> path = new List<Transform>();
-    private SpriteRenderer sprite;
+    private int currentPositionIndex;
+
+    public bool isMoving = false;
+
 
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
-        if (sprite != null) sprite.color = playerColor;
-        currentCircle = 0;
-    }
-
-    public void SetPath(List<Transform> newPath)
-    {
-        path = newPath;
-        if (path.Count > 0)
-        {
-            transform.position = path[0].position;
-            currentCircle = 0;
-=======
-    // Визуальные настройки
-    public Color playerColor = Color.red;
-    public GameObject selectionIndicator;
-
-    // Состояние
-    private int currentPositionIndex = 0;
-    private bool isMoving = false;
-    private SpriteRenderer spriteRenderer;
-
-    void Start()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = playerColor;
-        }
-
-        if (pathPoints.Count > 0)
-        {
-            // Ставим на первый круг
-            transform.position = pathPoints[0].position;
-            currentPositionIndex = 0;
-        }
-
-        // Скрываем индикатор выбора
-        if (selectionIndicator != null)
-        {
-            selectionIndicator.SetActive(false);
->>>>>>> 9f0d800e9c1bd3c22d260225912622676d7dd4c5
-        }
+        player = GetComponent<Player>();
+        pathPoints = player.pathPoints;
+        currentPositionIndex = player.currentPositionIndex;
+        player.MoveAlongPath(0);
     }
 
     public void HandleClick()
@@ -127,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
                     // Проверяем можно ли двигаться
                     if (canMoveBackwards || clickedIndex > currentPositionIndex)
                     {
-                        StartCoroutine(MoveAlongPath(clickedIndex));
+                        StartCoroutine(player.MoveAlongPath(clickedIndex));
                     }
                     else
                     {
@@ -183,93 +140,43 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Для телепортации (например, при спец-кругах)
-    public void TeleportToCircle(int circleIndex)
-=======
-    IEnumerator MoveAlongPath(int targetIndex)
-    {
-        isMoving = true;
+    //IEnumerator MoveAlongPath(int targetIndex)
+    //{
+    //    isMoving = true;
 
-        // Определяем направление (1 = вперед, -1 = назад)
-        int direction = (targetIndex > currentPositionIndex) ? 1 : -1;
+    //    // Определяем направление (1 = вперед, -1 = назад)
+    //    int direction = (targetIndex > currentPositionIndex) ? 1 : -1;
 
-        // Двигаемся по одному кругу
-        while (currentPositionIndex != targetIndex)
-        {
-            int nextIndex = currentPositionIndex + direction;
+    //    // Двигаемся по одному кругу
+    //    while (currentPositionIndex != targetIndex)
+    //    {
+    //        int nextIndex = currentPositionIndex + direction;
 
-            // Движение к следующему кругу
-            Vector3 startPos = transform.position;
-            Vector3 endPos = pathPoints[nextIndex].position;
-            float distance = Vector3.Distance(startPos, endPos);
-            float duration = distance / moveSpeed;
+    //        // Движение к следующему кругу
+    //        Vector3 startPos = transform.position;
+    //        Vector3 endPos = pathPoints[nextIndex].position;
+    //        float distance = Vector3.Distance(startPos, endPos);
+    //        float duration = distance / moveSpeed;
 
-            float elapsedTime = 0f;
-            while (elapsedTime < duration)
-            {
-                transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / duration);
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
+    //        float elapsedTime = 0f;
+    //        while (elapsedTime < duration)
+    //        {
+    //            transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / duration);
+    //            elapsedTime += Time.deltaTime;
+    //            yield return null;
+    //        }
 
-            // Точно ставим на круг
-            transform.position = endPos;
-            currentPositionIndex = nextIndex;
+    //        // Точно ставим на круг
+    //        transform.position = endPos;
+    //        currentPositionIndex = nextIndex;
 
-            // Небольшая пауза на круге
-            yield return new WaitForSeconds(pauseBetweenCircles);
-        }
+    //        // Небольшая пауза на круге
+    //        yield return new WaitForSeconds(pauseBetweenCircles);
+    //    }
 
-        isMoving = false;
-        Debug.Log($"Достигнут круг {currentPositionIndex + 1}");
-    }
-
-    // Публичные методы для управления
-
-    public void SetPath(List<Transform> points)
->>>>>>> 9f0d800e9c1bd3c22d260225912622676d7dd4c5
-    {
-        if (circleIndex >= 0 && circleIndex < path.Count)
-        {
-<<<<<<< HEAD
-            transform.position = path[circleIndex].position;
-            currentCircle = circleIndex;
-        }
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = playerColor;
-        Gizmos.DrawWireSphere(transform.position, 0.3f);
-=======
-            currentPositionIndex = 0;
-            transform.position = pathPoints[0].position;
-        }
-    }
-
-    public void SetActive(bool active)
-    {
-        if (selectionIndicator != null)
-        {
-            selectionIndicator.SetActive(active);
-        }
-
-        if (spriteRenderer != null)
-        {
-            Color color = spriteRenderer.color;
-            color.a = active ? 1f : 0.5f;
-            spriteRenderer.color = color;
-        }
-    }
-
-    public void SetColor(Color color)
-    {
-        playerColor = color;
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = color;
-        }
-    }
+    //    isMoving = false;
+    //    Debug.Log($"Достигнут круг {currentPositionIndex + 1}");
+    //}
 
     public bool IsMoving()
     {
@@ -290,28 +197,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Для отладки в редакторе
-    void OnDrawGizmos()
-    {
-        if (pathPoints.Count < 2) return;
-
-        Gizmos.color = playerColor;
-
-        // Рисуем линию пути
-        for (int i = 0; i < pathPoints.Count - 1; i++)
-        {
-            if (pathPoints[i] != null && pathPoints[i + 1] != null)
-            {
-                Gizmos.DrawLine(pathPoints[i].position, pathPoints[i + 1].position);
-            }
-        }
-
-        // Показываем текущую позицию
-        if (currentPositionIndex < pathPoints.Count && pathPoints[currentPositionIndex] != null)
-        {
-            Gizmos.color = Color.white;
-            Gizmos.DrawWireSphere(pathPoints[currentPositionIndex].position, 0.2f);
-        }
->>>>>>> 9f0d800e9c1bd3c22d260225912622676d7dd4c5
-    }
 }

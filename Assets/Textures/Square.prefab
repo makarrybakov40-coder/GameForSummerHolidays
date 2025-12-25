@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9118686182879709260}
   - component: {fileID: 7942122415558682389}
   - component: {fileID: 6935242356106516174}
+  - component: {fileID: -1890407767637574598}
   m_Layer: 0
   m_Name: Square
   m_TagString: Player
@@ -104,14 +105,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 7
-  rotationSpeed: 200
-  delayBetweenPoints: 0
+  pauseBetweenCircles: 0.1
   canMoveBackwards: 1
-  playerSprite: {fileID: 7482667652216324306, guid: a818ef9f907e3d245b102817671caa9d, type: 3}
-  selectionIndicator: {fileID: 0}
+  isMoving: 0
+--- !u!114 &-1890407767637574598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795789034828084941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b9a9aaf26d91244b5838aeeb348dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
   pathPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  playerColor: {r: 1, g: 0, b: 0, a: 1}
+  selectionIndicator: {fileID: 0}
+  currentPositionIndex: 0
