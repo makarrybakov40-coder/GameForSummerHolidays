@@ -3,13 +3,6 @@ using UnityEngine;
 
 public class PathCircle : MonoBehaviour
 {
-<<<<<<< HEAD
-    public int circleNumber = 1;
-    public int pathIndex = 0;
-
-    private SpriteRenderer sprite;
-    private Color normalColor = Color.white;
-=======
     [Header("Настройки")]
     public int circleNumber = 1;
     public Color normalColor = Color.white;
@@ -17,28 +10,16 @@ public class PathCircle : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
->>>>>>> 9f0d800e9c1bd3c22d260225912622676d7dd4c5
 
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
-
-        // Разные цвета для разных путей
-        if (sprite != null)
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
         {
-<<<<<<< HEAD
-            float hue = pathIndex * 0.3f;
-            normalColor = Color.HSVToRGB(hue, 0.3f, 1f);
-            sprite.color = normalColor;
-        }
-
-        // Номер круга
-=======
             originalColor = spriteRenderer.color;
         }
 
         // Создаем текст с номером
->>>>>>> 9f0d800e9c1bd3c22d260225912622676d7dd4c5
         CreateNumberText();
     }
 
@@ -46,21 +27,6 @@ public class PathCircle : MonoBehaviour
     {
         GameObject textObj = new GameObject("Number");
         textObj.transform.SetParent(transform);
-<<<<<<< HEAD
-        textObj.transform.localPosition = Vector3.zero;
-
-        TextMesh text = textObj.AddComponent<TextMesh>();
-        text.text = circleNumber.ToString();
-        text.fontSize = 20;
-        text.characterSize = 0.05f;
-        text.color = Color.black;
-        text.anchor = TextAnchor.MiddleCenter;
-
-        textObj.transform.localScale = Vector3.one * 0.5f;
-    }
-
-    void OnMouseEnter()
-=======
         textObj.transform.localPosition = new Vector3(0, 0, -0.1f);
 
         TextMesh textMesh = textObj.AddComponent<TextMesh>();
@@ -92,21 +58,13 @@ public class PathCircle : MonoBehaviour
 
     // Метод для установки номера (можно вызывать вручную)
     public void SetNumber(int number)
->>>>>>> 9f0d800e9c1bd3c22d260225912622676d7dd4c5
     {
-        if (sprite != null) sprite.color = Color.yellow;
-    }
+        circleNumber = number;
 
-<<<<<<< HEAD
-    void OnMouseExit()
-    {
-        if (sprite != null) sprite.color = normalColor;
-=======
         TextMesh textMesh = GetComponentInChildren<TextMesh>();
         if (textMesh != null)
         {
             textMesh.text = number.ToString();
         }
->>>>>>> 9f0d800e9c1bd3c22d260225912622676d7dd4c5
     }
 }

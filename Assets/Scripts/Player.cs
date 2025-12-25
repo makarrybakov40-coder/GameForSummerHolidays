@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
         Debug.Log($"Достигнут круг {currentPositionIndex + 1}");
     }
 
-    // Публичные методы для управления
+        // Публичные методы для управления
 
     public void SetPath(List<Transform> points)
     {
