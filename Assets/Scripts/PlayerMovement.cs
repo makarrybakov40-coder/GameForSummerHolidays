@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             if (circle != null)
             {
                 // Ищем этот круг в нашем пути
-                int clickedIndex = -1;
+                int clickedIndex = 0;
                 for (int i = 0; i < pathPoints.Count; i++)
                 {
                     if (pathPoints[i] == circle.transform)
@@ -60,10 +60,10 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
 
-                if (clickedIndex != -1 && clickedIndex != currentPositionIndex)
+                if (clickedIndex != -1)
                 {
                     // Проверяем можно ли двигаться
-                    if (canMoveBackwards == true) //|| clickedIndex > currentPositionIndex))
+                    if (canMoveBackwards == true || clickedIndex > currentPositionIndex)
                     {
                         StartCoroutine(player.MoveAlongPath(clickedIndex));
                     }

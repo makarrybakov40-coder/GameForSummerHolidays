@@ -3,32 +3,34 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class PlayerSelectionController : MonoBehaviour
+public class PlayerSelectionController2 : MonoBehaviour
 {
     [Header("Настройки")]
     public List<Player> players = new List<Player>();
+    public LayerMask playerLayer;
+    public LayerMask groundLayer;
 
     [Header("Визуальные эффекты")]
     public Color selectedColor = Color.yellow;
     public Color normalColor = Color.white;
+    public GameObject selectionCirclePrefab;
 
-    public LayerMask playerLayer;
-    public LayerMask groundLayer;
+    [Header("UI")]
+    public Text selectedPlayerText;
 
     // Текущее состояние
     private Player selectedPlayer = null;
     private Dictionary<Player, GameObject> selectionIndicators = new Dictionary<Player, GameObject>();
 
     PlayerMovement playerMovement;
-    Player player;
-
-    private bool isMoving;
 
     void Start()
     {
+        CreateSelectionIndicators();
         DeselectAllPlayers();
 
         playerMovement = GetComponent<PlayerMovement>();
+        playerMovement.IsMoving();
     }
 
     void Update()
@@ -44,7 +46,6 @@ public class PlayerSelectionController : MonoBehaviour
         {
             HandleSelectedPlayer();
         }
-
     }
 
     void HandleMouseClick()
@@ -72,7 +73,6 @@ public class PlayerSelectionController : MonoBehaviour
             }
         }
     }
-
 
     void HandleSelectedPlayer()
     {
@@ -155,9 +155,22 @@ public class PlayerSelectionController : MonoBehaviour
     }
 
 
-    public void DeselectCurrentPlayer()
+    void CreateSelectionIndicators()
     {
-        DeselectAllPlayers();
+        foreach (var player in players)
+        {
+            if (player == null) continue;
+
+            if (selectionCirclePrefab != null)
+            {
+                GameObject indicator = Instantiate(selectionCirclePrefab, player.transform);
+                indicator.transform.localPosition = Vector3.zero;
+                indicator.transform.localScale = Vector3.one * 1.2f;
+                indicator.SetActive(false);
+
+                selectionIndicators[player] = indicator;
+            }
+        }
     }
 
     int FindCircleIndexInPlayerPath(Player player, Transform circleTransform)
@@ -178,4 +191,20 @@ public class PlayerSelectionController : MonoBehaviour
 
         return -1;
     }
+
+
+    // Публичные методы для UI кнопок
+    public void SelectPlayerByIndex(int index)
+    {
+        if (index >= 0 && index < players.Count && players[index] != null)
+        {
+            SelectPlayer(players[index]);
+        }
+    }
+
+    public void DeselectCurrentPlayer()
+    {
+        DeselectAllPlayers();
+    }
+
 }
