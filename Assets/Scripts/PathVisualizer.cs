@@ -44,7 +44,7 @@ public class PathVisualizer : MonoBehaviour
         circles.Clear();
         foreach (Transform child in transform)
         {
-            if (child.GetComponent<PathCircle>() != null)
+            if (child.GetComponent<PathPoint>() != null)
             {
                 circles.Add(child);
             }
@@ -52,8 +52,8 @@ public class PathVisualizer : MonoBehaviour
 
         // Сортируем по номеру
         circles.Sort((a, b) =>
-            a.GetComponent<PathCircle>().circleNumber.CompareTo(
-            b.GetComponent<PathCircle>().circleNumber));
+            a.GetComponent<PathPoint>().circleNumber.CompareTo(
+            b.GetComponent<PathPoint>().circleNumber));
 
         // Обновляем LineRenderer
         if (lineRenderer != null && circles.Count > 1)

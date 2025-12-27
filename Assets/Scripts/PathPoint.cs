@@ -1,7 +1,7 @@
 // PathCircle.cs
 using UnityEngine;
 
-public class PathCircle : MonoBehaviour
+public class PathPoint : MonoBehaviour
 {
     [Header("Настройки")]
     public int circleNumber = 1;
