@@ -7,111 +7,66 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
-    [Header("Ссылки")]
-    public List<Transform> pathPoints = new List<Transform>();
+        
+    [SerializeField] private Path _playerPath;
+    [SerializeField] private PlayerMovement playerMovement;
 
-    // Визуальные настройки
-    public Color playerColor = Color.red;
-    public GameObject selectionIndicator;
+    private int _playerID;
+    private int currentPositionIndex = 0;
 
-    // Состояние
-    public int currentPositionIndex = 0;
+    public int PlayerID { get { return _playerID; } }
 
-    private bool isMoving;
-    private SpriteRenderer spriteRenderer;
-
-    private float moveSpeed;
-    private float pauseBetweenCircles;
-
-    PlayerMovement playerMovement;
-
-    public void SetPath(List<Transform> points)
+    public void SetPath(Path path)
     {
-        pathPoints = points;
-        if (pathPoints.Count > 0)
+        _playerPath = path;
+        if (_playerPath.PathPoints.Count > 0)
         {
             currentPositionIndex = 0;
-            transform.position = pathPoints[0].position;
+            transform.position = _playerPath.PathPoints[0].transform.position;
         }
     }
 
-    public void SetActive(bool active)
+    public void Move(PathPoint pathPoint)
     {
-        if (selectionIndicator != null)
-        {
-            selectionIndicator.SetActive(active);
-        }
-
-        if (spriteRenderer != null)
-        {
-            Color color = spriteRenderer.color;
-            color.a = active ? 1f : 0.5f;
-            spriteRenderer.color = color;
-        }
-    }
-
-    public void SetColor(Color color)
-    {
-        playerColor = color;
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = color;
-        }
-    }
-
-    public void Move(PathPoint pathPoint) 
-    {
-        playerMovement.MoveToPathPoint(pathPoints, pathPoint);
+        playerMovement.MoveToPathPoint(_playerPath, pathPoint);
     }
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = playerColor;
-        }
 
-        if (pathPoints.Count > 0)
+        if (_playerPath.PathPoints.Count > 0)
         {
             // Ставим на первый круг
-            transform.position = pathPoints[0].position;
+            transform.position = _playerPath.PathPoints[0].transform.position;
             currentPositionIndex = 0;
         }
-
-        // Скрываем индикатор выбора
-        if (selectionIndicator != null)
-        {
-            selectionIndicator.SetActive(false);
-        }
-
-        playerMovement = GetComponent<PlayerMovement>();
-    }
-
  
+        playerMovement = GetComponent<PlayerMovement>();
+    }    
+    
 
 
 
-    void OnDrawGizmos()
-    {
-        if (pathPoints.Count < 2) return;
+    //void OnDrawGizmos()
+    //{
+    //    if (_playerPath.PathPoints.Count < 2) return;
 
-        Gizmos.color = playerColor;
+    //    Gizmos.color = playerColor;
 
-        // Рисуем линию пути
-        for (int i = 0; i < pathPoints.Count - 1; i++)
-        {
-            if (pathPoints[i] != null && pathPoints[i + 1] != null)
-            {
-                Gizmos.DrawLine(pathPoints[i].position, pathPoints[i + 1].position);
-            }
-        }
+    //    // Рисуем линию пути
+    //    for (int i = 0; i < _playerPath.PathPoints.Count - 1; i++)
+    //    {
+    //        if (_playerPath.PathPoints[i] != null && _playerPath.PathPoints[i + 1] != null)
+    //        {
+    //            Gizmos.DrawLine(_playerPath.PathPoints[i].transform.position, _playerPath.PathPoints[i + 1].transform.position);
+    //        }
+    //    }
 
-        // Показываем текущую позицию
-        if (currentPositionIndex < pathPoints.Count && pathPoints[currentPositionIndex] != null)
-        {
-            Gizmos.color = Color.white;
-            Gizmos.DrawWireSphere(pathPoints[currentPositionIndex].position, 0.2f);
-        }
-    }
+    //    // Показываем текущую позицию
+    //    if (currentPositionIndex < _playerPath.PathPoints.Count && _playerPath.PathPoints[currentPositionIndex] != null)
+    //    {
+    //        Gizmos.color = Color.white;
+    //        Gizmos.DrawWireSphere(_playerPath.PathPoints[currentPositionIndex].transform.position, 0.2f);
+    //    }
+    //}
 }

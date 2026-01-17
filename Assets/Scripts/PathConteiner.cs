@@ -4,34 +4,19 @@ using System.Linq;
 using UnityEngine;
 
 public class PathConteiner : MonoBehaviour
-{
-	private Dictionary<int, Path> _pathList;		
+{    
+    [SerializeField] private List<Path> paths;    
 
-	public int PathList
-	{
-		get { return _pathList.Count; }
-	}
+    private void Start()
+    {
+        for (int i = 0; i < 2; i++) 
+        {
+            paths.Add(new Path(i, i));
+        }
 
-	private void Start()
-	{
+        List<PathPoint> _findedPathPoints;
 
-		FindAndCreatePaths();
+        
+    }
 
-	}
-
-	public void FindAndCreatePaths()
-	{
-		Checkpoint[] _checkpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
-
-		foreach (Checkpoint checkpoint in _checkpoints) 
-		{
-			_pathList.TryAdd(checkpoint.GetPlayerID(), new Path());
-			_pathList[checkpoint.GetPlayerID()].AddCheckpoint(checkpoint);						
-		}
-
-		Debug.Log(_pathList.Count);
-	}
-
-
-	
 }

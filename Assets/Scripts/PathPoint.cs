@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class PathPoint : MonoBehaviour
 {
-    [Header("Настройки")]
-    public int circleNumber = 1;
-    public Color normalColor = Color.white;
-    public Color hoverColor = Color.yellow;
+    [SerializeField] private int _pathID;
 
+    [Header("Настройки")]
+    private Color normalColor = Color.white;
+    private Color hoverColor = Color.yellow;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
+
+    public int PathID {  get { return _pathID; } }
 
     void Start()
     {
@@ -18,28 +20,9 @@ public class PathPoint : MonoBehaviour
         {
             originalColor = spriteRenderer.color;
         }
-
-        // Создаем текст с номером
-        CreateNumberText();
     }
 
-    void CreateNumberText()
-    {
-        GameObject textObj = new GameObject("Number");
-        textObj.transform.SetParent(transform);
-        textObj.transform.localPosition = new Vector3(0, 0, -0.1f);
-
-        TextMesh textMesh = textObj.AddComponent<TextMesh>();
-        textMesh.text = circleNumber.ToString();
-        textMesh.fontSize = 20;
-        textMesh.characterSize = 0.05f;
-        textMesh.color = Color.black;
-        textMesh.anchor = TextAnchor.MiddleCenter;
-        textMesh.alignment = TextAlignment.Center;
-
-        textObj.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
-    }
-
+    
     void OnMouseEnter()
     {
         if (spriteRenderer != null)
@@ -59,7 +42,6 @@ public class PathPoint : MonoBehaviour
     // Метод для установки номера (можно вызывать вручную)
     public void SetNumber(int number)
     {
-        circleNumber = number;
 
         TextMesh textMesh = GetComponentInChildren<TextMesh>();
         if (textMesh != null)

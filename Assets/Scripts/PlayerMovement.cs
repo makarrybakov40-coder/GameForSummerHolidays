@@ -5,6 +5,9 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Game game;
+    [SerializeField] private Path _playerPath;
+
     private int currentPositionIndex;
     [Header("Настройки движения")]
     public float moveSpeed = 5f;
@@ -18,14 +21,14 @@ public class PlayerMovement : MonoBehaviour
         currentPositionIndex = 0;
     }
 
-    public void MoveToPathPoint(List<Transform> pathPoints, PathPoint target)
+    public void MoveToPathPoint(Path playerPath, PathPoint target)
     {
         if (target != null)
         {            
             int clickedIndex = 0;
-            for (int i = 0; i < pathPoints.Count; i++)
+            for (int i = 0; i < _playerPath.PathPoints.Count; i++)
             {
-                if (pathPoints[i] == target.transform)
+                if (_playerPath.PathPoints[i] == target.transform)
                 {
                     clickedIndex = i;
                     break;
@@ -36,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
             {               
                 if (canMoveBackwards == true || clickedIndex > currentPositionIndex)
                 {
-                    StartCoroutine(MoveAlongPath(clickedIndex, pathPoints));
+                    StartCoroutine(MoveAlongPath(clickedIndex, playerPath.PathPoints));
                 }
                 else
                 {
@@ -47,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-   private IEnumerator MoveAlongPath(int targetIndex, List<Transform> pathPoints)
+    private IEnumerator MoveAlongPath(int targetIndex, List<PathPoint> pathPoints)
     {
         isMoving = true;
 
@@ -61,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Движение к следующему кругу
             Vector3 startPos = transform.position;
-            Vector3 endPos = pathPoints[nextIndex].position;
+            Vector3 endPos = pathPoints[nextIndex].transform.position;
             float distance = Vector3.Distance(startPos, endPos);
             float duration = distance / moveSpeed;
 
