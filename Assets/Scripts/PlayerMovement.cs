@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public bool canMoveBackwards = true;
     public bool isMoving = false;
 
+    [SerializeField] private Game game;
+
 
     private void Start()
     {           
@@ -50,7 +52,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+
     private IEnumerator MoveAlongPath(int targetIndex, List<PathPoint> pathPoints)
+
     {
         isMoving = true;
 
@@ -82,10 +86,13 @@ public class PlayerMovement : MonoBehaviour
 
             // Небольшая пауза на круге
             yield return new WaitForSeconds(pauseBetweenCircles);
+
         }
 
         isMoving = false;
         Debug.Log($"Достигнут круг {currentPositionIndex + 1}");
+        game.ActivePlayer();
+        game.PLayerUnSelect();
     }
 
     public bool IsMoving()
