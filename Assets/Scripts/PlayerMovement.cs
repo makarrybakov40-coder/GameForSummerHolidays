@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     public bool canMoveBackwards = true;
     public bool isMoving = false;
 
-    [SerializeField] private Game game;
 
 
     private void Start()
@@ -91,8 +90,6 @@ public class PlayerMovement : MonoBehaviour
 
         isMoving = false;
         Debug.Log($"Достигнут круг {currentPositionIndex + 1}");
-        game.ActivePlayer();
-        game.PLayerUnSelect();
     }
 
     public bool IsMoving()
