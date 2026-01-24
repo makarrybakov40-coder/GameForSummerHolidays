@@ -3,39 +3,32 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Linq;
 
 public class Path
 {
     [SerializeField] private int _playerID;
-    [SerializeField] private int _pathID;
-    [SerializeField] private string _searchTag = "PathPoint";
 
-    public  List<PathPoint> PathPoints;
+    private  List<PathPoint> _pathPoints;
 
+    public  List<PathPoint> PathPoints {  get { return _pathPoints; } }
     public int PlayerID { get { return _playerID; } }
-    public int PathID { get { return _pathID; } }
 
-    public List<PathPoint> foundPoint = new List<PathPoint>();
-
-    public Path(int pathID, int playerID)
+    public Path(int playerID)
     {
-        _pathID = pathID;
         _playerID = playerID;
+        _pathPoints = new List<PathPoint>();
     }
 
-    void FindByTag(string tag)
+    public void AddPathPoint(PathPoint pathPoint)
     {
-        foundPoint.Clear();
+       _pathPoints.Add(pathPoint);
+    }
 
-        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag(tag);
-
-        foreach (GameObject obj in taggedObjects)
-        {
-            PathPoint pathPoints = obj.GetComponent<PathPoint>();
-            if (pathPoints != null)
-            {
-                foundPoint.Add(pathPoints);
-            }
-        }
+    public void SortPathPoints()
+    {
+        var filteredPathPoint = _pathPoints.OrderBy(p => p.PositionNumber);
+        _pathPoints = filteredPathPoint.ToList();
+        Debug.Log(_pathPoints);
     }
 }

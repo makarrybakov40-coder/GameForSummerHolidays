@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class PathPoint : MonoBehaviour
 {
-    [SerializeField] private int _pathID;
+    [SerializeField] private int _playerID;
+    [SerializeField] private int _positionNumber;
 
     [Header("Настройки")]
     private Color normalColor = Color.white;
@@ -11,7 +12,8 @@ public class PathPoint : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
 
-    public int PathID {  get { return _pathID; } }
+    public int PlayerID {  get { return _playerID; } }
+    public int PositionNumber { get { return _positionNumber; } }
 
     void Start()
     {

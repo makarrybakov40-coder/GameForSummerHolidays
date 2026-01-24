@@ -1,22 +1,42 @@
 using NUnit.Framework;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class PathConteiner : MonoBehaviour
-{    
-    [SerializeField] private List<Path> paths;    
+{
+    [SerializeField] private Dictionary<int, Path> paths = new Dictionary<int, Path>();  
 
-    private void Start()
+    public void CreatePlayerPaths()
     {
-        for (int i = 0; i < 2; i++) 
+        // Находит все активные объекты с компонентом
+        PathPoint[] allComponents = FindObjectsByType<PathPoint>(FindObjectsSortMode.None);
+        foreach (PathPoint comp in allComponents)
         {
-            paths.Add(new Path(i, i));
+           if (paths.ContainsKey(comp.PlayerID))
+           {
+                paths[comp.PlayerID].AddPathPoint(comp);
+           }
+           else
+           {
+                paths.Add(comp.PlayerID, new Path(comp.PlayerID));
+                paths[comp.PlayerID].AddPathPoint(comp);
+           }
         }
 
-        List<PathPoint> _findedPathPoints;
-        
-        
+        foreach (KeyValuePair<int, Path> item in paths)
+        {
+            item.Value.SortPathPoints();
+        }
+
+        foreach (KeyValuePair<int, Path> item in paths)
+        {
+            foreach (PathPoint item1 in item.Value.PathPoints)
+            {
+                Debug.Log(item1.name);
+            }
+        }
+
+
     }
 
 

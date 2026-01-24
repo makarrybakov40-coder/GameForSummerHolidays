@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         playerMovement.MoveToPathPoint(_playerPath, pathPoint);
     }
 
-    private void Start()
+    private void StartPosition()
     {
 
         if (_playerPath.PathPoints.Count > 0)
@@ -40,10 +40,14 @@ public class Player : MonoBehaviour
             transform.position = _playerPath.PathPoints[0].transform.position;
             currentPositionIndex = 0;
         }
- 
-        playerMovement = GetComponent<PlayerMovement>();
-    }    
-    
+
+    }
+
+    private void Start()
+    {
+         playerMovement = GetComponent<PlayerMovement>();       
+    }
+
 
 
 
