@@ -1,11 +1,17 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PathConteiner : MonoBehaviour
 {
-    [SerializeField] private Dictionary<int, Path> paths = new Dictionary<int, Path>();  
+    [SerializeField] private Dictionary<int, Path> paths = new Dictionary<int, Path>();
 
+
+    private void Start()
+    {
+        CreatePlayerPaths();
+    }
     public void CreatePlayerPaths()
     {
         // Находит все активные объекты с компонентом
@@ -36,9 +42,12 @@ public class PathConteiner : MonoBehaviour
             }
         }
 
-
+        Debug.Log(paths.Count);
     }
-
+    public Path GetPathForPlayer(int playerID)
+    {
+        return paths.Where(x => x.Key == playerID).Select(x => x.Value).FirstOrDefault();
+    }
 
 
 }

@@ -5,7 +5,6 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Game game;
     [SerializeField] private Path _playerPath;
 
     private int currentPositionIndex;

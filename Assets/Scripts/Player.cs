@@ -10,11 +10,14 @@ public class Player : MonoBehaviour
         
     [SerializeField] private Path _playerPath;
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private int n = 0;
+    [SerializeField] private PathConteiner _conteiner;
 
     private int _playerID;
     private int currentPositionIndex = 0;
 
     public int PlayerID { get { return _playerID; } }
+
 
     public void SetPath(Path path)
     {
@@ -45,7 +48,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-         playerMovement = GetComponent<PlayerMovement>();       
+        playerMovement = GetComponent<PlayerMovement>();
+        _conteiner.GetPathForPlayer(n);
     }
 
 
