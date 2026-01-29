@@ -5,7 +5,9 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Path _playerPath;
+    [SerializeField] private PathConteiner _pathConteiner;
+
+    private Path _playerPath;
 
     private int currentPositionIndex;
     [Header("Настройки движения")]
@@ -19,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {           
         currentPositionIndex = 0;
+        _playerPath = _pathConteiner.GetPathForPlayer(0);
+        Debug.Log($"_playerPath = {_playerPath}");
+        Debug.Log($"player movement start: {_playerPath.PathPoints.Count}");
     }
 
     public void MoveToPathPoint(Path playerPath, PathPoint target)
@@ -26,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         if (target != null)
         {            
             int clickedIndex = 0;
+
             for (int i = 0; i < _playerPath.PathPoints.Count; i++)
             {
                 if (_playerPath.PathPoints[i] == target.transform)
@@ -48,8 +54,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
-
 
     private IEnumerator MoveAlongPath(int targetIndex, List<PathPoint> pathPoints)
 

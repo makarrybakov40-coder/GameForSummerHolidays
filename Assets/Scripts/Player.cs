@@ -7,10 +7,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
-        
-    [SerializeField] private Path _playerPath;
-    [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private int n = 0;
+    private Path _playerPath;
+    private PlayerMovement playerMovement;
     [SerializeField] private PathConteiner _conteiner;
 
     private int _playerID;
@@ -49,7 +47,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        _conteiner.GetPathForPlayer(n);
+        _playerPath = _conteiner.GetPathForPlayer(0);
     }
 
 

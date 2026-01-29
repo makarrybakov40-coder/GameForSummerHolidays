@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class PathConteiner : MonoBehaviour
 {
-    [SerializeField] private Dictionary<int, Path> paths = new Dictionary<int, Path>();
+    private Dictionary<int, Path> paths = new Dictionary<int, Path>();
 
 
     private void Start()
     {
-        CreatePlayerPaths();
+        
     }
-    public void CreatePlayerPaths()
+    private void CreatePlayerPaths()
     {
         // Находит все активные объекты с компонентом
         PathPoint[] allComponents = FindObjectsByType<PathPoint>(FindObjectsSortMode.None);
@@ -38,15 +38,16 @@ public class PathConteiner : MonoBehaviour
         {
             foreach (PathPoint item1 in item.Value.PathPoints)
             {
-                Debug.Log(item1.name);
+
             }
         }
 
-        Debug.Log(paths.Count);
+        //Debug.Log(paths.Count);
     }
     public Path GetPathForPlayer(int playerID)
     {
-        return paths.Where(x => x.Key == playerID).Select(x => x.Value).FirstOrDefault();
+        CreatePlayerPaths();
+        return paths[playerID];
     }
 
 
