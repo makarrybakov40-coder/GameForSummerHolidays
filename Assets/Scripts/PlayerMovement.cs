@@ -6,56 +6,25 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PathConteiner _pathConteiner;
-
-    private Path _playerPath;
-
-    private int currentPositionIndex;
+    
     [Header("Настройки движения")]
     public float moveSpeed = 5f;
     public float pauseBetweenCircles = 0.1f;
     public bool canMoveBackwards = true;
     public bool isMoving = false;
+        
 
-
-
-    private void Start()
-    {           
-        currentPositionIndex = 0;
-        _playerPath = _pathConteiner.GetPathForPlayer(0);
-        Debug.Log($"_playerPath = {_playerPath}");
-        Debug.Log($"player movement start: {_playerPath.PathPoints.Count}");
-    }
-
-    public void MoveToPathPoint(Path playerPath, PathPoint target)
+    public void MoveToPathPoint(Path playerPath, PathPoint target, int currentPositionIndex)
     {
         if (target != null)
-        {            
-            int clickedIndex = 0;
-
-            for (int i = 0; i < _playerPath.PathPoints.Count; i++)
-            {
-                if (_playerPath.PathPoints[i] == target.transform)
-                {
-                    clickedIndex = i;
-                    break;
-                }
-            }
-
-            if (clickedIndex != -1)
-            {               
-                if (canMoveBackwards == true || clickedIndex > currentPositionIndex)
-                {
-                    StartCoroutine(MoveAlongPath(clickedIndex, playerPath.PathPoints));
-                }
-                else
-                {
-                    Debug.Log("Нельзя двигаться назад!");
-                }
-            }
+        {           
+            
+            StartCoroutine(MoveAlongPath(target.PositionNumber, playerPath.PathPoints, currentPositionIndex));
+          
         }
     }
 
-    private IEnumerator MoveAlongPath(int targetIndex, List<PathPoint> pathPoints)
+    private IEnumerator MoveAlongPath(int targetIndex, List<PathPoint> pathPoints, int currentPositionIndex)
 
     {
         isMoving = true;
@@ -100,10 +69,6 @@ public class PlayerMovement : MonoBehaviour
         return isMoving;
     }
 
-    public int GetCurrentCircle()
-    {
-        return currentPositionIndex;
-    }
 
     //public void TeleportToCircle(int circleIndex)
     //{

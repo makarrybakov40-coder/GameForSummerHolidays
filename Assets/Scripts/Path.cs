@@ -1,11 +1,8 @@
-using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 
-public class Path
+public class Path : MonoBehaviour
 {
     [SerializeField] private int _playerID;
 
@@ -14,21 +11,30 @@ public class Path
     public  List<PathPoint> PathPoints {  get { return _pathPoints; } }
     public int PlayerID { get { return _playerID; } }
 
-    public Path(int playerID)
-    {
-        _playerID = playerID;
-        _pathPoints = new List<PathPoint>();
-    }
-
     public void AddPathPoint(PathPoint pathPoint)
     {
-       _pathPoints.Add(pathPoint);
+        _pathPoints.Add(pathPoint);
     }
 
     public void SortPathPoints()
     {
         var filteredPathPoint = _pathPoints.OrderBy(p => p.PositionNumber);
         _pathPoints = filteredPathPoint.ToList();
-        Debug.Log(_pathPoints);
+    }
+
+    private void GetAllPathPoints()
+    {
+        _pathPoints = gameObject.transform.GetComponentsInChildren<PathPoint>().ToList();
+        
+        for (int i = 0; i < _pathPoints.Count; i++)
+        {
+            _pathPoints[i].ConnectPointToPath(this);
+        }
+
+    }
+
+    private void Start()
+    {
+        GetAllPathPoints();
     }
 }

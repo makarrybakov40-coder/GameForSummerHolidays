@@ -7,11 +7,11 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
-    private Path _playerPath;
+    public Path _playerPath;
     private PlayerMovement playerMovement;
     [SerializeField] private PathConteiner _conteiner;
 
-    private int _playerID;
+    [SerializeField] private int _playerID = 0;
     private int currentPositionIndex = 0;
 
     public int PlayerID { get { return _playerID; } }
@@ -20,19 +20,14 @@ public class Player : MonoBehaviour
     public void SetPath(Path path)
     {
         _playerPath = path;
-        if (_playerPath.PathPoints.Count > 0)
-        {
-            currentPositionIndex = 0;
-            transform.position = _playerPath.PathPoints[0].transform.position;
-        }
     }
 
     public void Move(PathPoint pathPoint)
     {
-        playerMovement.MoveToPathPoint(_playerPath, pathPoint);
+        if (pathPoint.PlayerID == PlayerID) {playerMovement.MoveToPathPoint(_playerPath, pathPoint, currentPositionIndex);}
     }
 
-    private void StartPosition()
+    public void MoveToStartPosition()
     {
 
         if (_playerPath.PathPoints.Count > 0)
@@ -47,7 +42,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        _playerPath = _conteiner.GetPathForPlayer(0);
     }
 
 

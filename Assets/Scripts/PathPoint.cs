@@ -1,10 +1,11 @@
 // PathCircle.cs
+using System;
 using UnityEngine;
 
 public class PathPoint : MonoBehaviour
 {
-    [SerializeField] private int _playerID;
-    [SerializeField] private int _positionNumber;
+    private int _playerID;
+    private int _positionNumber;
 
     [Header("Настройки")]
     private Color normalColor = Color.white;
@@ -14,6 +15,11 @@ public class PathPoint : MonoBehaviour
 
     public int PlayerID {  get { return _playerID; } }
     public int PositionNumber { get { return _positionNumber; } }
+
+    public void ConnectPointToPath(Path path)
+    {
+        _playerID = path.PlayerID;
+    }
 
     void Start()
     {
@@ -38,17 +44,6 @@ public class PathPoint : MonoBehaviour
         if (spriteRenderer != null)
         {
             spriteRenderer.color = originalColor;
-        }
-    }
-
-    // Метод для установки номера (можно вызывать вручную)
-    public void SetNumber(int number)
-    {
-
-        TextMesh textMesh = GetComponentInChildren<TextMesh>();
-        if (textMesh != null)
-        {
-            textMesh.text = number.ToString();
         }
     }
 }
