@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private IEnumerator MoveAlongPath(int targetIndex, List<PathPoint> pathPoints, int currentPositionIndex)
-
     {
         isMoving = true;
 
