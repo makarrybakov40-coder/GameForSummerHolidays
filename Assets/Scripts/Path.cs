@@ -38,15 +38,6 @@ public class Path : MonoBehaviour
     {
 
         GetAllPathPoints();
-        FindComponentsInChildren(_pathPoints);
     }
-    public void FindComponentsInChildren<T>(List<T> targetList) where T : Component
-    {
-        targetList.Clear();
 
-        T[] childComponents = GetComponentsInChildren<T>();
-        targetList.AddRange(childComponents);
-
-        Debug.Log($"Найдено {targetList.Count} компонентов типа {typeof(T).Name} в потомках");
-    }
 }
