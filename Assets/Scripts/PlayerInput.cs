@@ -16,12 +16,15 @@ public class PlayerInput : MonoBehaviour
     private void MouseCLickAction()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);        
+        
         if (hit.collider == null)
         {
             game.PLayerUnSelect();
             return;
         }
+
+        Debug.Log(hit.transform.name);
 
         if (hit.collider.TryGetComponent(out Player player))
         {

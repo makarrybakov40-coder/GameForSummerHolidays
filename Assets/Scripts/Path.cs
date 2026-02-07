@@ -12,32 +12,31 @@ public class Path : MonoBehaviour
     public  List<PathPoint> PathPoints {  get { return _pathPoints; } }
     public int PlayerID { get { return _playerID; } }
 
-    public void AddPathPoint(PathPoint pathPoint)
-    {
-        _pathPoints.Add(pathPoint);
-    }
+    //public void AddPathPoint(PathPoint pathPoint)
+    //{
+    //    _pathPoints.Add(pathPoint);
+    //}
 
-    public void SortPathPoints()
-    {
-        var filteredPathPoint = _pathPoints.OrderBy(p => p.PositionNumber);
-        _pathPoints = filteredPathPoint.ToList();
-    }
+    //public void SortPathPoints()
+    //{
+    //    var filteredPathPoint = _pathPoints.OrderBy(p => p.PositionNumber);
+    //    _pathPoints = filteredPathPoint.ToList();
+    //}
 
-    private void GetAllPathPoints()
+    public void FindAllPathPoints()
     {
         _pathPoints = gameObject.transform.GetComponentsInChildren<PathPoint>().ToList();
         
         for (int i = 0; i < _pathPoints.Count; i++)
         {
-            _pathPoints[i].ConnectPointToPath(this);
+            _pathPoints[i].ConnectPointToPath(_playerID, i);
         }
 
     }
 
-    private void Start()
+    public void SetSingleWay()
     {
-
-        GetAllPathPoints();
-    }
+        _playerID = -1;
+    } 
 
 }

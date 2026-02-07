@@ -38,11 +38,12 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
-        //InitializeGame();
+        InitializeGame();
     }
 
     private void InitializeGame()
     {
+        _pathConteiner.FindAllPath();
         GetAllPlayers();
         SetPathsToPlayers();
 

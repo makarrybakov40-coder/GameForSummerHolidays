@@ -16,9 +16,10 @@ public class PathPoint : MonoBehaviour
     public int PlayerID {  get { return _playerID; } }
     public int PositionNumber { get { return _positionNumber; } }
 
-    public void ConnectPointToPath(Path path)
+    public void ConnectPointToPath(int playerID, int positionNumber)
     {
-        _playerID = path.PlayerID;
+        _playerID = playerID;
+        _positionNumber = positionNumber;
     }
 
     void Start()

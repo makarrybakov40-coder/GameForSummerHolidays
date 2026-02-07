@@ -7,9 +7,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
-    public Path _playerPath;
+    private Path _playerPath;
     private PlayerMovement playerMovement;
-    [SerializeField] private PathConteiner _conteiner;
 
     [SerializeField] private int _playerID = 0;
     private int currentPositionIndex = 0;
@@ -24,12 +23,15 @@ public class Player : MonoBehaviour
 
     public void Move(PathPoint pathPoint)
     {
-        if (pathPoint.PlayerID == PlayerID) {playerMovement.MoveToPathPoint(_playerPath, pathPoint, currentPositionIndex);}
+        if (pathPoint.PlayerID == PlayerID || pathPoint.PlayerID == -1) 
+        {
+            playerMovement.MoveToPathPoint(_playerPath, pathPoint, currentPositionIndex);
+            currentPositionIndex = pathPoint.PositionNumber;
+        }
     }
 
     public void MoveToStartPosition()
     {
-
         if (_playerPath.PathPoints.Count > 0)
         {
             // Ставим на первый круг
