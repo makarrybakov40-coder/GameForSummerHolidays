@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Start
   - Points
+  - PlayerSelector
   layers:
   - Default
   - TransparentFX

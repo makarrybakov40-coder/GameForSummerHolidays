@@ -69,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+
     //public void TeleportToCircle(int circleIndex)
     //{
     //    if (circleIndex >= 0 && circleIndex < pathPoints.Count)

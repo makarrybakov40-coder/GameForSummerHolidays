@@ -1,9 +1,13 @@
+using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
 
     [SerializeField] private Game game;
+    private Player _player;
 
     private void Update()
     {
@@ -29,6 +33,7 @@ public class PlayerInput : MonoBehaviour
         if (hit.collider.TryGetComponent(out Player player))
         {
             game.PlayerSelect(player);
+            SetActivePlayer();
             return;
         }
         if (hit.collider.TryGetComponent(out PathPoint pathPoint))
@@ -39,6 +44,23 @@ public class PlayerInput : MonoBehaviour
                 game.ActivePlayer().Move(pathPoint);
             }
          
+        }
+    }
+
+    private void SetActivePlayer()
+    {
+        List<Player> targetGameObject;
+        targetGameObject = gameObject.transform.GetComponentsInChildren<Player>().ToList();
+        for (int i = 0; i < targetGameObject.Count; i++)
+        {
+            targetGameObject.Add(targetGameObject[i]);
+        }
+        for (int i = 0; i < targetGameObject.Count; i++)
+        {
+            if (_player.PlayerID == i)
+            {
+                targetGameObject[i].gameObject.SetActive(true);
+            }
         }
     }
 }

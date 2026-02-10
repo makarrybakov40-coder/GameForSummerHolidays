@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(PlayerMovement))]
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
     private PlayerMovement playerMovement;
 
     [SerializeField] private int _playerID = 0;
+    [SerializeField] private GameObject PlayerActivator;
     private int currentPositionIndex = 0;
 
     public int PlayerID { get { return _playerID; } }
@@ -44,6 +46,31 @@ public class Player : MonoBehaviour
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            if (hit.collider.TryGetComponent(out Player player))
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (PlayerID == i)
+                    {
+                        PlayerActivator.SetActive(true);
+                    }
+                }
+
+            }
+            else if (hit.collider == null)
+            {
+                PlayerActivator.SetActive(false);
+            }
+
+        }
     }
 
 
