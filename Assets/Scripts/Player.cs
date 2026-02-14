@@ -1,25 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.GraphicsBuffer;
-
 [RequireComponent(typeof(PlayerMovement))]
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private int _playerID = 0;
+    [SerializeField] private Material _outlineMaterial;
+
     private Path _playerPath;
     private PlayerMovement playerMovement;
-
-    [SerializeField] private int _playerID = 0;
+    private Material _defaultMaterial;
     private int currentPositionIndex = 0;
+    private SpriteRenderer _spriteRenderer;
 
     public int PlayerID { get { return _playerID; } }
 
 
     public void SetPath(Path path)
     {
-        _playerPath = path;
+        _playerPath = path;        
     }
 
     public void Move(PathPoint pathPoint)
@@ -45,6 +48,17 @@ public class Player : MonoBehaviour
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _defaultMaterial = _spriteRenderer.material;       
+    }
+
+    public void EnableOutLine()
+    {
+        _spriteRenderer.material = _outlineMaterial;
+    }
+    public void DisableOutLine()
+    {
+        _spriteRenderer.material = _defaultMaterial;
     }
 
 

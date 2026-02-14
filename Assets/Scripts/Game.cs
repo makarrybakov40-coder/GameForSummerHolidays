@@ -23,11 +23,18 @@ public class Game : MonoBehaviour
 
     public void PlayerSelect(Player player)
     {
+        PlayerUnSelect();
         _activePlayer = player;
+        _activePlayer.EnableOutLine();
     }
 
-    public void PLayerUnSelect()
+    public void PlayerUnSelect()
     {
+        if (_activePlayer != null)
+        {
+            _activePlayer.DisableOutLine();
+        }
+
         _activePlayer = null;
     }
 

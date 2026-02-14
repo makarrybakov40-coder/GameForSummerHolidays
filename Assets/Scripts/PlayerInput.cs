@@ -13,27 +13,26 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            MouseCLickAction();
+            MouseCLickAction(_player);
         }
     }
 
-    private void MouseCLickAction()
+    private void MouseCLickAction(Player player)
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);        
         
         if (hit.collider == null)
         {
-            game.PLayerUnSelect();
+            game.PlayerUnSelect();
             return;
         }
 
         Debug.Log(hit.transform.name);
 
-        if (hit.collider.TryGetComponent(out Player player))
+        if (hit.collider.TryGetComponent(out PlayerSelector playerSelector))
         {
-            game.PlayerSelect(player);
-            SetActivePlayer();
+            game.PlayerSelect(player);           
             return;
         }
         if (hit.collider.TryGetComponent(out PathPoint pathPoint))

@@ -29,6 +29,7 @@ public class PathPoint : MonoBehaviour
         {
             originalColor = spriteRenderer.color;
         }
+        //SetNumber();
     }
 
     
@@ -47,4 +48,14 @@ public class PathPoint : MonoBehaviour
             spriteRenderer.color = originalColor;
         }
     }
+
+    //private void SetNumber()
+    //{
+
+    //    TextMesh textMesh = GetComponentInChildren<TextMesh>();
+    //    if (textMesh != null)
+    //    {
+    //        textMesh.text = _positionNumber.ToString();
+    //    }
+    //}
 }
