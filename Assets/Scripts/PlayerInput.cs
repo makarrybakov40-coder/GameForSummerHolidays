@@ -9,17 +9,18 @@ public class PlayerInput : MonoBehaviour
 {
 
     [SerializeField] private Game game;
-    private Player _player;
+    private PathPoint _pathPoint;
+    private PlayerSelector _playerSelector;
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            MouseCLickAction(_player);
+            MouseCLickAction();
         }
     }
 
-    private async void MouseCLickAction(Player player)
+    private void MouseCLickAction()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);        
@@ -30,57 +31,39 @@ public class PlayerInput : MonoBehaviour
             return;
         }
 
-        Debug.Log(hit.transform.name);
-
         if (hit.collider.TryGetComponent(out PlayerSelector playerSelector))
         {
+            _playerSelector = playerSelector;
             game.PlayerSelect(playerSelector.PlayerIndex);           
-            return;
         }
         if (hit.collider.TryGetComponent(out PathPoint pathPoint))
         {
 
             if (game.ActivePlayer() != null)
             {
-                game.ActivePlayer().Move(pathPoint);
-                await Task.Delay(2000);
+                _pathPoint = pathPoint;
+                StartCoroutine(MoveToPoint());
 
                 if (pathPoint.SpecialPoint == true && pathPoint.SpecialPointMoveTo)
                 {
-
-                    game.ActivePlayer().Move(pathPoint.SpecialPointMoveTo);
+                    StartCoroutine(MoveToSpecialPoint());
                 }
             }
-
-            //if (pathPoint.SpecialPoint == true && pathPoint.SpecialPointMoveTo)
-            //{
-            //    StartCoroutine(MyCoroutine());
-            //    game.ActivePlayer().Move(pathPoint.SpecialPointMoveTo);
-            //}
-         
         }
     }
 
-    IEnumerator MyCoroutine()
+    private IEnumerator MoveToPoint() 
     {
-        yield return new WaitForSeconds(5);
+        game.ActivePlayer().Move(_pathPoint);
+        yield return _pathPoint;
+        game.PlayerUnSelect();
     }
-
-
-    //private void SetActivePlayer()
-    //{
-    //    List<Player> targetGameObject;
-    //    targetGameObject = gameObject.transform.GetComponentsInChildren<Player>().ToList();
-    //    for (int i = 0; i < targetGameObject.Count; i++)
-    //    {
-    //        targetGameObject.Add(targetGameObject[i]);
-    //    }
-    //    for (int i = 0; i < targetGameObject.Count; i++)
-    //    {
-    //        if (_player.PlayerID == i)
-    //        {
-    //            targetGameObject[i].gameObject.SetActive(true);
-    //        }
-    //    }
-    //}
+    private IEnumerator MoveToSpecialPoint()
+    {
+        yield return  new WaitForSeconds(2);
+        game.PlayerSelect(_playerSelector.PlayerIndex);
+        game.ActivePlayer().Move(_pathPoint.SpecialPointMoveTo);
+        Debug.Log($"Ход {game.ActivePlayer()} завершен");
+        game.PlayerUnSelect();
+    }
 }
