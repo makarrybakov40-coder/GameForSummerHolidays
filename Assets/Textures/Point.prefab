@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9206999084888354177}
   - component: {fileID: 7014867849195786302}
   m_Layer: 0
-  m_Name: Points
+  m_Name: Point
   m_TagString: Points
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,3 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8143cfed4df924ab3fd6ebb77766bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathPoint
+  _numberSize: 40
+  _numberWidth: 0.3
+  _specialPoint: 0
+  _specialPointMoveTo: {fileID: 0}

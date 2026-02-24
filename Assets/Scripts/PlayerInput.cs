@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,7 +19,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    private void MouseCLickAction(Player player)
+    private async void MouseCLickAction(Player player)
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);        
@@ -32,7 +34,7 @@ public class PlayerInput : MonoBehaviour
 
         if (hit.collider.TryGetComponent(out PlayerSelector playerSelector))
         {
-            game.PlayerSelect(player);           
+            game.PlayerSelect(playerSelector.PlayerIndex);           
             return;
         }
         if (hit.collider.TryGetComponent(out PathPoint pathPoint))
@@ -41,25 +43,44 @@ public class PlayerInput : MonoBehaviour
             if (game.ActivePlayer() != null)
             {
                 game.ActivePlayer().Move(pathPoint);
+                await Task.Delay(2000);
+
+                if (pathPoint.SpecialPoint == true && pathPoint.SpecialPointMoveTo)
+                {
+
+                    game.ActivePlayer().Move(pathPoint.SpecialPointMoveTo);
+                }
             }
+
+            //if (pathPoint.SpecialPoint == true && pathPoint.SpecialPointMoveTo)
+            //{
+            //    StartCoroutine(MyCoroutine());
+            //    game.ActivePlayer().Move(pathPoint.SpecialPointMoveTo);
+            //}
          
         }
     }
 
-    private void SetActivePlayer()
+    IEnumerator MyCoroutine()
     {
-        List<Player> targetGameObject;
-        targetGameObject = gameObject.transform.GetComponentsInChildren<Player>().ToList();
-        for (int i = 0; i < targetGameObject.Count; i++)
-        {
-            targetGameObject.Add(targetGameObject[i]);
-        }
-        for (int i = 0; i < targetGameObject.Count; i++)
-        {
-            if (_player.PlayerID == i)
-            {
-                targetGameObject[i].gameObject.SetActive(true);
-            }
-        }
+        yield return new WaitForSeconds(5);
     }
+
+
+    //private void SetActivePlayer()
+    //{
+    //    List<Player> targetGameObject;
+    //    targetGameObject = gameObject.transform.GetComponentsInChildren<Player>().ToList();
+    //    for (int i = 0; i < targetGameObject.Count; i++)
+    //    {
+    //        targetGameObject.Add(targetGameObject[i]);
+    //    }
+    //    for (int i = 0; i < targetGameObject.Count; i++)
+    //    {
+    //        if (_player.PlayerID == i)
+    //        {
+    //            targetGameObject[i].gameObject.SetActive(true);
+    //        }
+    //    }
+    //}
 }
