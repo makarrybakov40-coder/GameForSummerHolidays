@@ -7,12 +7,13 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PathConteiner _pathConteiner;
     
+    private bool isMoving = false;
+
     [Header("Настройки движения")]
     public float moveSpeed = 5f;
     public float pauseBetweenCircles = 0.1f;
     public bool canMoveBackwards = true;
-    public bool isMoving = false;
-        
+    public bool IsMoving {  get { return isMoving; } }
 
     public void MoveToPathPoint(Path playerPath, PathPoint target, int currentPositionIndex)
     {
@@ -61,11 +62,6 @@ public class PlayerMovement : MonoBehaviour
 
         isMoving = false;
         Debug.Log($"Достигнут круг {currentPositionIndex + 1}");
-    }
-
-    public bool IsMoving()
-    {
-        return isMoving;
     }
 
 

@@ -144,3 +144,4 @@ MonoBehaviour:
   _numberWidth: 0.3
   _specialPoint: 0
   _specialPointMoveTo: {fileID: 0}
+  _pointSprite: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}

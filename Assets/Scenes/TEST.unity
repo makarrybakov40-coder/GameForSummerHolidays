@@ -349,7 +349,6 @@ MonoBehaviour:
   moveSpeed: 700
   pauseBetweenCircles: 0
   canMoveBackwards: 1
-  isMoving: 0
 --- !u!212 &414924967
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -533,9 +532,9 @@ GameObject:
   - component: {fileID: 445884293}
   - component: {fileID: 445884292}
   - component: {fileID: 445884296}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -570,7 +569,6 @@ MonoBehaviour:
   moveSpeed: 700
   pauseBetweenCircles: 0
   canMoveBackwards: 1
-  isMoving: 0
 --- !u!212 &445884294
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -967,6 +965,10 @@ PrefabInstance:
       propertyPath: _numberSize
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 7014867849195786302, guid: e70ce1ec09f5942479f49343642db9b4, type: 3}
+      propertyPath: _pointSprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
     - target: {fileID: 8949359417803328135, guid: e70ce1ec09f5942479f49343642db9b4, type: 3}
       propertyPath: circleNumber
       value: 0
@@ -1194,9 +1196,9 @@ GameObject:
   - component: {fileID: 869158659}
   - component: {fileID: 869158658}
   - component: {fileID: 869158662}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1231,7 +1233,6 @@ MonoBehaviour:
   moveSpeed: 700
   pauseBetweenCircles: 0
   canMoveBackwards: 1
-  isMoving: 0
 --- !u!212 &869158660
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1601,7 +1602,6 @@ MonoBehaviour:
   moveSpeed: 700
   pauseBetweenCircles: 0
   canMoveBackwards: 1
-  isMoving: 0
 --- !u!212 &938842418
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2705,7 +2705,6 @@ MonoBehaviour:
   moveSpeed: 700
   pauseBetweenCircles: 0
   canMoveBackwards: 1
-  isMoving: 0
 --- !u!212 &1887155723
 SpriteRenderer:
   m_ObjectHideFlags: 0

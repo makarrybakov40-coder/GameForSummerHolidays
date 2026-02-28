@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     private Material _defaultMaterial;
     private int currentPositionIndex = 0;
     private SpriteRenderer _spriteRenderer;
-
     public int PlayerID { get { return _playerID; } }
 
 
@@ -27,10 +26,10 @@ public class Player : MonoBehaviour
 
     public void Move(PathPoint pathPoint)
     {
-        if (pathPoint.PlayerID == PlayerID || pathPoint.PlayerID == -1) 
-        {
+        if (pathPoint.PlayerID == PlayerID || pathPoint.PlayerID == -1 && playerMovement.IsMoving == false) 
+        {            
             playerMovement.MoveToPathPoint(_playerPath, pathPoint, currentPositionIndex);
-            currentPositionIndex = pathPoint.PositionNumber;
+            currentPositionIndex = pathPoint.PositionNumber;           
         }
     }
 

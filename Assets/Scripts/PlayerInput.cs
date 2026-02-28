@@ -41,29 +41,8 @@ public class PlayerInput : MonoBehaviour
 
             if (game.ActivePlayer() != null)
             {
-                _pathPoint = pathPoint;
-                StartCoroutine(MoveToPoint());
-
-                if (pathPoint.SpecialPoint == true && pathPoint.SpecialPointMoveTo)
-                {
-                    StartCoroutine(MoveToSpecialPoint());
-                }
+                game.ActivePlayer().Move(pathPoint);
             }
         }
-    }
-
-    private IEnumerator MoveToPoint() 
-    {
-        game.ActivePlayer().Move(_pathPoint);
-        yield return _pathPoint;
-        game.PlayerUnSelect();
-    }
-    private IEnumerator MoveToSpecialPoint()
-    {
-        yield return  new WaitForSeconds(2);
-        game.PlayerSelect(_playerSelector.PlayerIndex);
-        game.ActivePlayer().Move(_pathPoint.SpecialPointMoveTo);
-        Debug.Log($"Ход {game.ActivePlayer()} завершен");
-        game.PlayerUnSelect();
     }
 }
