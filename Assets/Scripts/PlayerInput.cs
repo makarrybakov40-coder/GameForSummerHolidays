@@ -42,6 +42,15 @@ public class PlayerInput : MonoBehaviour
             if (game.ActivePlayer() != null)
             {
                 game.ActivePlayer().Move(pathPoint);
+                if (hit.collider.TryGetComponent(out MoveToPoint moveToPoint)) 
+                {
+                    moveToPoint.PointAction(game);
+                }
+                //if (game.ActivePlayer().IsMoving == false) 
+                //{
+                //    pathPoint.PointAction(game);
+                //}
+
             }
         }
     }

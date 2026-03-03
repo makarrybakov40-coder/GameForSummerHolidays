@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4701081784675088226}
   - component: {fileID: 9206999084888354177}
   - component: {fileID: 7014867849195786302}
+  - component: {fileID: 3948954302224532000}
   m_Layer: 0
   m_Name: Point
   m_TagString: Points
@@ -140,8 +141,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8143cfed4df924ab3fd6ebb77766bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathPoint
+  _pointSprite: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
   _numberSize: 40
   _numberWidth: 0.3
-  _specialPoint: 0
-  _specialPointMoveTo: {fileID: 0}
-  _pointSprite: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
+--- !u!114 &3948954302224532000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616131336604229170}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984cf1020370e124399155bd1f215149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveToPoint
+  _pointSprite: {fileID: 0}

@@ -7,9 +7,9 @@ public class PathPoint : Point
     [SerializeField] private int _numberSize = 20;
     [SerializeField] private float _numberWidth = 0.3f; 
 
-    public override void PointAction()
+    public override void PointAction(Game game)
     {
-        
+        game.PlayerUnSelect();
     }
 
 

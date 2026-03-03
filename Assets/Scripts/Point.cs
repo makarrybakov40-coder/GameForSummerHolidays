@@ -16,7 +16,7 @@ abstract public class Point : MonoBehaviour
     public int PlayerID { get { return _playerID; } }
     public int PositionNumber { get { return _positionNumber; } }
 
-    abstract public void PointAction();
+    abstract public void PointAction(Game game);
 
     public void ConnectPointToPath(int playerID, int positionNumber)
     {
@@ -52,36 +52,4 @@ abstract public class Point : MonoBehaviour
     {
         _pointSprite = sprite;
     }
-    //private void SetNumber()
-    //{
-
-    //    TextMesh textMesh = GetComponentInChildren<TextMesh>();
-    //    if (textMesh != null)
-    //    {
-    //        textMesh.text = _positionNumber.ToString();
-    //    }
-    //}
-
-    //void CreateNumberText()
-    //{
-    //    int positionNumber;
-    //    positionNumber = _positionNumber;
-    //    positionNumber++;
-    //    // ������� GameObject ��� ������
-    //    GameObject textObject = new GameObject("PointNumber");
-    //    textObject.transform.SetParent(transform);
-    //    textObject.transform.localPosition = Vector3.zero;
-
-    //    // ��������� ��������� TextMesh
-    //    TextMesh textMesh = textObject.AddComponent<TextMesh>();
-    //    textMesh.text = positionNumber.ToString();
-    //    textMesh.fontSize = _numberSize;
-    //    textMesh.characterSize = _numberWidth;
-    //    textMesh.anchor = TextAnchor.MiddleCenter;
-    //    textMesh.alignment = TextAlignment.Center;
-    //    textMesh.color = Color.black;
-
-    //    // ��������� �������
-    //    textObject.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
-    //}
 }

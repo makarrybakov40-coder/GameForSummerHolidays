@@ -16,8 +16,9 @@ public class Player : MonoBehaviour
     private Material _defaultMaterial;
     private int currentPositionIndex = 0;
     private SpriteRenderer _spriteRenderer;
+    private bool _isMoving;
     public int PlayerID { get { return _playerID; } }
-
+    public bool IsMoving { get { return _isMoving; } }
 
     public void SetPath(Path path)
     {
@@ -27,9 +28,11 @@ public class Player : MonoBehaviour
     public void Move(PathPoint pathPoint)
     {
         if (pathPoint.PlayerID == PlayerID || pathPoint.PlayerID == -1 && playerMovement.IsMoving == false) 
-        {            
+        {    
+            _isMoving = playerMovement.IsMoving;
             playerMovement.MoveToPathPoint(_playerPath, pathPoint, currentPositionIndex);
-            currentPositionIndex = pathPoint.PositionNumber;           
+            currentPositionIndex = pathPoint.PositionNumber;
+            _isMoving = playerMovement.IsMoving;
         }
     }
 
@@ -46,6 +49,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+
         playerMovement = GetComponent<PlayerMovement>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _defaultMaterial = _spriteRenderer.material;       
