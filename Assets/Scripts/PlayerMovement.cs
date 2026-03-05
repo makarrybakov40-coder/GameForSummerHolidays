@@ -1,7 +1,8 @@
 // PlayerController.cs
-using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator MoveAlongPath(int targetIndex, List<PathPoint> pathPoints, int currentPositionIndex)
     {
         isMoving = true;
-
         // Определяем направление (1 = вперед, -1 = назад)
         int direction = (targetIndex > currentPositionIndex) ? 1 : -1;
 
@@ -62,6 +62,13 @@ public class PlayerMovement : MonoBehaviour
 
         isMoving = false;
         Debug.Log($"Достигнут круг {currentPositionIndex + 1}");
+
+        var point = pathPoints[targetIndex].GetComponent<MoveToPoint>();
+        if (point.isActiveAndEnabled)
+        {
+            
+            StartCoroutine(MoveAlongPath(point.pathPoint.PositionNumber, pathPoints, currentPositionIndex));
+        }
     }
 
 

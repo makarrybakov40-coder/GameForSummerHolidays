@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private Material _defaultMaterial;
     private int currentPositionIndex = 0;
     private SpriteRenderer _spriteRenderer;
-    private bool _isMoving;
+    private bool _isMoving = false;
     public int PlayerID { get { return _playerID; } }
     public bool IsMoving { get { return _isMoving; } }
 
@@ -29,10 +29,8 @@ public class Player : MonoBehaviour
     {
         if (pathPoint.PlayerID == PlayerID || pathPoint.PlayerID == -1 && playerMovement.IsMoving == false) 
         {    
-            _isMoving = playerMovement.IsMoving;
             playerMovement.MoveToPathPoint(_playerPath, pathPoint, currentPositionIndex);
             currentPositionIndex = pathPoint.PositionNumber;
-            _isMoving = playerMovement.IsMoving;
         }
     }
 
@@ -62,6 +60,11 @@ public class Player : MonoBehaviour
     public void DisableOutLine()
     {
         _spriteRenderer.material = _defaultMaterial;
+    }
+
+    private void Update()
+    {
+        _isMoving = playerMovement.IsMoving;
     }
 
 
