@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-
-    [SerializeField] private Game game;
     private PathPoint _pathPoint;
     private PlayerSelector _playerSelector;
 
@@ -27,35 +25,21 @@ public class PlayerInput : MonoBehaviour
         
         if (hit.collider == null)
         {
-            game.PlayerUnSelect();
+            Game.Instance.PlayerUnSelect();
             return;
         }
 
         if (hit.collider.TryGetComponent(out PlayerSelector playerSelector))
         {
             _playerSelector = playerSelector;
-            game.PlayerSelect(playerSelector.PlayerIndex);           
+            Game.Instance.PlayerSelect(playerSelector.PlayerIndex);           
         }
-        if (hit.collider.TryGetComponent(out PathPoint pathPoint))
+        if (hit.collider.TryGetComponent(out Point pathPoint))
         {
-
-            if (game.ActivePlayer() != null)
+            
+            if (Game.Instance.ActivePlayer() != null)
             {
-                //game.ActivePlayer().Move(pathPoint);
-                if (hit.collider.TryGetComponent(out MoveToPoint moveToPoint) && moveToPoint.isActiveAndEnabled) 
-                {
-                    game.ActivePlayer().Move(pathPoint);
-                    moveToPoint.PointAction(game);
-                }
-                else
-                {
-                    game.ActivePlayer().Move(pathPoint);
-                }
-                //if (game.ActivePlayer().IsMoving == false) 
-                //{
-                //    pathPoint.PointAction(game);
-                //}
-
+                Game.Instance.ActivePlayer().Move(pathPoint);
             }
         }
     }

@@ -16,24 +16,24 @@ public class PlayerMovement : MonoBehaviour
     public bool canMoveBackwards = true;
     public bool IsMoving {  get { return isMoving; } }
 
-    public void MoveToPathPoint(Path playerPath, PathPoint target, int currentPositionIndex)
+    public void MoveToPathPoint(Path playerPath, Point target, int currentPositionIndex)
     {
         if (target != null)
         {           
             
-            StartCoroutine(MoveAlongPath(target.PositionNumber, playerPath.PathPoints, currentPositionIndex));
+            StartCoroutine(MoveAlongPath(target, playerPath.PathPoints, currentPositionIndex));
           
         }
     }
 
-    private IEnumerator MoveAlongPath(int targetIndex, List<PathPoint> pathPoints, int currentPositionIndex)
+    private IEnumerator MoveAlongPath(Point target, List<Point> pathPoints, int currentPositionIndex)
     {
         isMoving = true;
         // Определяем направление (1 = вперед, -1 = назад)
-        int direction = (targetIndex > currentPositionIndex) ? 1 : -1;
+        int direction = (target.PositionNumber > currentPositionIndex) ? 1 : -1;
 
         // Двигаемся по одному кругу
-        while (currentPositionIndex != targetIndex)
+        while (currentPositionIndex != target.PositionNumber)
         {
             int nextIndex = currentPositionIndex + direction;
 
@@ -62,13 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
         isMoving = false;
         Debug.Log($"Достигнут круг {currentPositionIndex + 1}");
-
-        var point = pathPoints[targetIndex].GetComponent<MoveToPoint>();
-        if (point.isActiveAndEnabled)
-        {
-            
-            StartCoroutine(MoveAlongPath(point.pathPoint.PositionNumber, pathPoints, currentPositionIndex));
-        }
+        target.PointAction();
     }
 
 

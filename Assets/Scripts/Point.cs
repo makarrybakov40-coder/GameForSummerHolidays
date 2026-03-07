@@ -16,7 +16,7 @@ abstract public class Point : MonoBehaviour
     public int PlayerID { get { return _playerID; } }
     public int PositionNumber { get { return _positionNumber; } }
 
-    abstract public void PointAction(Game game);
+    abstract public void PointAction();
 
     public void ConnectPointToPath(int playerID, int positionNumber)
     {

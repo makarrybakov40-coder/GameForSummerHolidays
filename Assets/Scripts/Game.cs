@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+    private static Game _instance;
+    public static Game Instance { get { if (_instance == null) Debug.LogError("instance is NULL"); return _instance; } }
+
     private List<Player> _allPlayers;
     private Player _activePlayer;
     [SerializeField] private PathConteiner _pathConteiner;
@@ -45,6 +48,7 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
+        _instance = this;
         InitializeGame();
     }
 

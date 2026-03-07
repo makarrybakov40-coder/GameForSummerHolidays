@@ -7,9 +7,9 @@ public class Path : MonoBehaviour
 {
     [SerializeField] private int _playerID;
 
-    private  List<PathPoint> _pathPoints;
+    private  List<Point> _pathPoints;
 
-    public  List<PathPoint> PathPoints {  get { return _pathPoints; } }
+    public  List<Point> PathPoints {  get { return _pathPoints; } }
     public int PlayerID { get { return _playerID; } }
 
     //public void AddPathPoint(PathPoint pathPoint)
@@ -25,7 +25,7 @@ public class Path : MonoBehaviour
 
     public void FindAllPathPoints()
     {
-        _pathPoints = gameObject.transform.GetComponentsInChildren<PathPoint>().ToList();
+        _pathPoints = gameObject.transform.GetComponentsInChildren<Point>().ToList();
         
         for (int i = 0; i < _pathPoints.Count; i++)
         {

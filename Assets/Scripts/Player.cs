@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         _playerPath = path;        
     }
 
-    public void Move(PathPoint pathPoint)
+    public void Move(Point pathPoint)
     {
         if (pathPoint.PlayerID == PlayerID || pathPoint.PlayerID == -1 && playerMovement.IsMoving == false) 
         {    
