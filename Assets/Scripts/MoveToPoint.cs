@@ -13,6 +13,7 @@ public class MoveToPoint : Point
 
     private IEnumerator Delayer() 
     {
+        
         yield return new WaitForSeconds(_delay);
         Game.Instance.ActivePlayer().Move(pathPoint);
     }

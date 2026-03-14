@@ -29,11 +29,11 @@ public class PlayerInput : MonoBehaviour
             return;
         }
 
-        if (hit.collider.TryGetComponent(out PlayerSelector playerSelector))
-        {
-            _playerSelector = playerSelector;
-            Game.Instance.PlayerSelect(playerSelector.PlayerIndex);           
-        }
+        //if (hit.collider.TryGetComponent(out PlayerSelector playerSelector))
+        //{
+        //    _playerSelector = playerSelector;
+        //    Game.Instance.PlayerSelect(playerSelector.PlayerIndex);           
+        //}
         if (hit.collider.TryGetComponent(out Point pathPoint))
         {
             
