@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class GenerateObjectsAtStart : MonoBehaviour
 {
-    [SerializeField] private List<Player> _generatePlayers;
+    [SerializeField] private List<PlayerSelector> _generatePlayers;
     [SerializeField] private GameObject _playerConteiner;
-    [SerializeField] private Playerview _playerview;
+    [SerializeField] private List<Playerview> _playerview;
 
     private void Start()
     {
@@ -15,9 +15,14 @@ public class GenerateObjectsAtStart : MonoBehaviour
         }   
     }
 
-    private void AddPlayer(Player player)
+    private void AddPlayer(PlayerSelector playerSelector)
     {
-        var view = Instantiate(_playerview, _playerConteiner.transform);
-        view.Render(player);
+        for (int i = 0; i < _playerview.Count; i++) 
+        {
+            var views = Instantiate(_playerview[i], _playerConteiner.transform);
+        
+            views.Render(playerSelector);
+        }
+        
     }
 }
