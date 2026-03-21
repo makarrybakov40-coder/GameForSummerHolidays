@@ -1,20 +1,26 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Playerview : MonoBehaviour
 {
-    [SerializeField] private Sprite _sprite;
-    private Image _spriteImage;
-    PlayerSelector _playerSelector;
+    private Sprite _sprite;
+    [SerializeField] private Image _playerImage;
+    [SerializeField] private TMP_Text _playerName;
+    [SerializeField] private Button _playerSelect;
+    private Player _player;
 
     private void Start()
     {
-        _spriteImage = GetComponent<Image>();
-        _spriteImage.sprite = _sprite;
+        _playerImage = GetComponent<Image>();       
+        _playerImage.sprite = _sprite;
     }
-    public void Render(PlayerSelector playerSelector)
+    public void Render(Player player)
     {
-        _playerSelector = playerSelector;
-
+        _player = player;
+        _playerImage.sprite = player.Sprite;
+        _playerName.text = player.PlayerName;
+        
     }
+
 }

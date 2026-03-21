@@ -10,6 +10,7 @@ public class Game : MonoBehaviour
     private List<Player> _allPlayers;
     private Player _activePlayer;
     [SerializeField] private PathConteiner _pathConteiner;
+    public List<Player> AllPlayers { get { return _allPlayers; } }
 
     public void SetPathsToPlayers()
     {

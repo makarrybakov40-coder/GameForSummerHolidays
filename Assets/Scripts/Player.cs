@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using TMPro;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.GraphicsBuffer;
@@ -10,6 +11,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int _playerID = 0;
     [SerializeField] private Material _outlineMaterial;
+    [SerializeField] private Sprite _sprite;
+    [SerializeField] private string _playerName;
 
     private Path _playerPath;
     private PlayerMovement playerMovement;
@@ -17,6 +20,9 @@ public class Player : MonoBehaviour
     private int currentPositionIndex = 0;
     private SpriteRenderer _spriteRenderer;
     private bool _isMoving = false;
+    public SpriteRenderer SpriteRenderer { get { return _spriteRenderer; } }
+    public Sprite Sprite { get { return _sprite; } }
+    public string PlayerName { get { return _playerName; } }
     public int PlayerID { get { return _playerID; } }
     public bool IsMoving { get { return _isMoving; } }
 
