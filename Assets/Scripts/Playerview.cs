@@ -20,6 +20,8 @@ public class Playerview : MonoBehaviour
         _player = player;
         _playerImage.sprite = player.Sprite;
         _playerName.text = player.PlayerName;
+        var buttonChild = GetComponentInChildren<PlayerSelector>();
+        buttonChild.PlayerIndex = player;
         
     }
 

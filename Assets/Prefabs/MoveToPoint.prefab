@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveToPoint
   _pointSprite: {fileID: 0}
   pathPoint: {fileID: 0}
-  _delay: 0
+  _delay: 0.5
 --- !u!58 &8605057715400576977
 CircleCollider2D:
   m_ObjectHideFlags: 0
