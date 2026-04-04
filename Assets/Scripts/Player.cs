@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private int currentPositionIndex = 0;
     private SpriteRenderer _spriteRenderer;
     private bool _isMoving = false;
+    private List<Feature> _feature;
     public SpriteRenderer SpriteRenderer { get { return _spriteRenderer; } }
     public Sprite Sprite { get { return _sprite; } }
     public string PlayerName { get { return _playerName; } }

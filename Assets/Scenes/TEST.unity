@@ -1049,7 +1049,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenerateObjectsAtStart
   _playerConteiner: {fileID: 526155031}
-  _playerview: {fileID: 3314217908158811152, guid: 83fabb26e6cfd204da8b2479eb7049a3, type: 3}
+  _playerView: {fileID: 6883458288453455690, guid: 83fabb26e6cfd204da8b2479eb7049a3, type: 3}
+  _playerPointCount: 0
+  _isPlayerView: 1
 --- !u!1 &284385110
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,6 +2180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526155032}
   - component: {fileID: 526155033}
+  - component: {fileID: 526155034}
   m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
@@ -2199,10 +2202,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1074020297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.082}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 26.1595}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_SizeDelta: {x: 581.99994, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &526155033
 MonoBehaviour:
@@ -2219,17 +2222,31 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 10
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: -1
+  m_Spacing: 33
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &526155034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526155031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1001 &530231006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4808,7 +4825,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c7de4b4760a7e4892f983ab20259c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSelector
-  _playerIndex: {fileID: 0}
 --- !u!1001 &1554393025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6523,7 +6539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
   m_Content: {fileID: 526155032}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 2
   m_Elasticity: 0.1
