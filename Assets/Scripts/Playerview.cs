@@ -10,8 +10,8 @@ public class Playerview : MonoBehaviour
     [SerializeField] private Button _playerSelect;
     [SerializeField] private FeatureView _feature;
     [SerializeField] private GameObject _playerFeatureConteiner;
-    private Player _player;
     private int _featureCount;
+    private Player _player;
 
     private void Start()
     {
@@ -25,6 +25,7 @@ public class Playerview : MonoBehaviour
         _playerName.text = player.PlayerName;
         var buttonChild = GetComponentInChildren<PlayerSelector>();
         buttonChild.PlayerIndex = player;
+        _featureCount = Game.Instance.PlayerFeatureDictionary.Count;
 
         for (int i = 0; i < _featureCount; i++) 
         {

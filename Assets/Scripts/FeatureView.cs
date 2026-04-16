@@ -15,7 +15,7 @@ public class FeatureView : MonoBehaviour
     public void PlayerFeatureRender(Player player, int feature)
     {
         _player = player;
-        //_playerFeatureImage.sprite = Game.Instance.FeatureSprites[""];
+        _playerFeatureImage.sprite = Game.Instance.PlayerFeatureDictionary[feature];
 
     }
 }

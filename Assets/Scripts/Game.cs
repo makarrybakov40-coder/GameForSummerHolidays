@@ -11,7 +11,9 @@ public class Game : MonoBehaviour
     private List<Player> _allPlayers;
     private Player _activePlayer;
     [SerializeField] private PathConteiner _pathConteiner;
+    [SerializeField] private SerializableDictionary<int, Sprite> _playerFeatureDictionary;
     public List<Player> AllPlayers { get { return _allPlayers.OrderBy(x => x.PlayerID).ToList(); } }
+    public SerializableDictionary<int, Sprite> PlayerFeatureDictionary {  get { return _playerFeatureDictionary; } }
 
     public void SetPathsToPlayers()
     {

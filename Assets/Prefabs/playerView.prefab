@@ -287,8 +287,8 @@ MonoBehaviour:
   _playerName: {fileID: 5522133555703145856}
   _playerSelect: {fileID: 5419281886608192431}
   _feature: {fileID: 2397354779705867641, guid: d8319ce907a620f458ca1714737849b1, type: 3}
-  _featureCount: 5
   _playerFeatureConteiner: {fileID: 1204867676850091383}
+  _featureCount: 5
 --- !u!1 &4215539342309715726
 GameObject:
   m_ObjectHideFlags: 0
