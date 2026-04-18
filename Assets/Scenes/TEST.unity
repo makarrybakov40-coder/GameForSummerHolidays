@@ -1151,23 +1151,23 @@ MonoBehaviour:
   _playerFeatureDictionary:
     dictionaryList:
     - Key: 0
-      Value: {fileID: -855298285791758126, guid: 661bf9d9bc8c71149b455c3ca1a5dd00, type: 3}
+      Value: {fileID: 3893031436278237338, guid: 10da773959e505a45adb3d9461a79b3d, type: 3}
       index: 0
       isKeyDuplicated: 0
     - Key: 1
-      Value: {fileID: 6937817954938267909, guid: 6630ca26255585b4f98fa51b87ffe965, type: 3}
+      Value: {fileID: 3893031436278237338, guid: 10da773959e505a45adb3d9461a79b3d, type: 3}
       index: 1
       isKeyDuplicated: 0
     - Key: 2
-      Value: {fileID: -6470460504253458178, guid: bec2977e48388d44f8e7c6bd426255fd, type: 3}
+      Value: {fileID: 3893031436278237338, guid: 10da773959e505a45adb3d9461a79b3d, type: 3}
       index: 2
       isKeyDuplicated: 0
     - Key: 3
-      Value: {fileID: -4178046375966092550, guid: b7a45563790f335478107a8a64e56f2b, type: 3}
+      Value: {fileID: 3893031436278237338, guid: 10da773959e505a45adb3d9461a79b3d, type: 3}
       index: 3
       isKeyDuplicated: 0
     - Key: 4
-      Value: {fileID: 4130640169021434097, guid: 660ccacc495ac6a4fac91662056279a8, type: 3}
+      Value: {fileID: 3893031436278237338, guid: 10da773959e505a45adb3d9461a79b3d, type: 3}
       index: 4
       isKeyDuplicated: 0
 --- !u!4 &322644585
@@ -1349,7 +1349,6 @@ MonoBehaviour:
   _outlineMaterial: {fileID: 2100000, guid: 4e0ae13635569ec4faae7fbcd37a0854, type: 2}
   _sprite: {fileID: -4178046375966092550, guid: b7a45563790f335478107a8a64e56f2b, type: 3}
   _playerName: "\u0427\u0435\u0440\u043D\u044B\u0439 \u043F\u043B\u0430\u0449"
-  _featureCount: 0
 --- !u!114 &414924966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1433,7 +1432,7 @@ Transform:
   m_GameObject: {fileID: 414924964}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2953.8, y: 951, z: 0.030938}
+  m_LocalPosition: {x: 2950, y: 951, z: 0.030938}
   m_LocalScale: {x: 20.176, y: 20.176, z: 20.176}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1572,7 +1571,6 @@ MonoBehaviour:
   _outlineMaterial: {fileID: 2100000, guid: 4e0ae13635569ec4faae7fbcd37a0854, type: 2}
   _sprite: {fileID: 6937817954938267909, guid: 6630ca26255585b4f98fa51b87ffe965, type: 3}
   _playerName: "\u0421\u0443\u043F\u0435\u0440 \u0441\u043E\u043D\u0438\u043A"
-  _featureCount: 0
 --- !u!114 &445884293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3064,7 +3062,6 @@ MonoBehaviour:
   _outlineMaterial: {fileID: 2100000, guid: 4e0ae13635569ec4faae7fbcd37a0854, type: 2}
   _sprite: {fileID: -6470460504253458178, guid: bec2977e48388d44f8e7c6bd426255fd, type: 3}
   _playerName: "\u0421\u0443\u043F\u0435\u0440 \u041C\u0430\u0440\u0438\u043E"
-  _featureCount: 0
 --- !u!114 &869158659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3400,7 +3397,6 @@ MonoBehaviour:
   _outlineMaterial: {fileID: 2100000, guid: 4e0ae13635569ec4faae7fbcd37a0854, type: 2}
   _sprite: {fileID: -855298285791758126, guid: 661bf9d9bc8c71149b455c3ca1a5dd00, type: 3}
   _playerName: "\u041F\u0438\u043A\u0430\u0447\u0443"
-  _featureCount: 0
 --- !u!114 &938842417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5967,7 +5963,6 @@ MonoBehaviour:
   _outlineMaterial: {fileID: 2100000, guid: 4e0ae13635569ec4faae7fbcd37a0854, type: 2}
   _sprite: {fileID: 4130640169021434097, guid: 660ccacc495ac6a4fac91662056279a8, type: 3}
   _playerName: "\u041B\u0435\u043E\u043D\u0430\u0440\u0434\u043E"
-  _featureCount: 0
 --- !u!114 &1887155722
 MonoBehaviour:
   m_ObjectHideFlags: 0

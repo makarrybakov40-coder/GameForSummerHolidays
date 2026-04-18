@@ -7,7 +7,6 @@ public class Playerview : MonoBehaviour
     private Sprite _sprite;
     [SerializeField] private Image _playerImage;
     [SerializeField] private TMP_Text _playerName;
-    [SerializeField] private Button _playerSelect;
     [SerializeField] private FeatureView _feature;
     [SerializeField] private GameObject _playerFeatureConteiner;
     private int _featureCount;
@@ -27,16 +26,16 @@ public class Playerview : MonoBehaviour
         buttonChild.PlayerIndex = player;
         _featureCount = Game.Instance.PlayerFeatureDictionary.Count;
 
-        for (int i = 0; i < _featureCount; i++) 
+        foreach (var item in Game.Instance.PlayerFeatureDictionary) 
         {
-            AddPlayerFeature(player, i);
+            AddPlayerFeature(player, item.Key);
         }
         
     }
-    public void AddPlayerFeature(Player player, int featureID)
+    public void AddPlayerFeature(Player player, string featureKey)
     {
         var view = Instantiate(_feature, _playerFeatureConteiner.transform);
-        view.PlayerFeatureRender(player, featureID);
+        view.PlayerFeatureRender(player, featureKey);
     }
 
 }

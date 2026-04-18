@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Material _outlineMaterial;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private string _playerName;
-    [SerializeField] private int _featureCount;
 
 
     private Path _playerPath;
@@ -22,15 +21,24 @@ public class Player : MonoBehaviour
     private int currentPositionIndex = 0;
     private SpriteRenderer _spriteRenderer;
     private bool _isMoving = false;
-    private Dictionary<string, int> _playerFeature;
+    private Dictionary<string, int> _playerFeature = new Dictionary<string, int>();
     public SpriteRenderer SpriteRenderer { get { return _spriteRenderer; } }
     public Sprite Sprite { get { return _sprite; } }
     public string PlayerName { get { return _playerName; } }
     public int PlayerID { get { return _playerID; } }
     public bool IsMoving { get { return _isMoving; } }
-    public int FeatureCount { get { return _featureCount; } }
     public Dictionary<string, int> PlayerFeature { get { return _playerFeature; } }
 
+    public void IncreaseFeatureValue(string featureKey, int value)
+    {
+        PlayerFeature[featureKey] += value;
+        Debug.Log($"Player {this.name} Feature {featureKey} - {_playerFeature[featureKey]}");
+    }
+    public void DecreaseFeatureValue(string featureKey, int value)
+    {
+        PlayerFeature[featureKey] -= value;
+        Debug.Log($"Player {this.name} Feature {featureKey} - {_playerFeature[featureKey]}");
+    }
     public void SetPath(Path path)
     {
         _playerPath = path;        

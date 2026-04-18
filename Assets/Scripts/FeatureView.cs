@@ -1,21 +1,36 @@
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FeatureView : MonoBehaviour
 {
-    private Sprite _sprite;
     [SerializeField] private Image _playerFeatureImage;
-    //[SerializeField] private TMP_Text _playerFeatureName;
-    [SerializeField] private Button _playerFeautureSelect;
+    [SerializeField] private TMP_Text _playerFeatureText;
     private Player _player;
+    private string _featureKey;
+    [SerializeField] int _featureIncreaseValue;
 
-    public void PlayerFeatureRender(Player player, int feature)
+    public void IncreaseFeature()
+    {
+        _player.IncreaseFeatureValue(_featureKey, _featureIncreaseValue);
+    }
+    public void DecreaseFeature()
+    {
+        _player.DecreaseFeatureValue(_featureKey, _featureIncreaseValue);
+    }
+    public void PlayerFeatureRender(Player player, string featureKey)
     {
         _player = player;
-        _playerFeatureImage.sprite = Game.Instance.PlayerFeatureDictionary[feature];
+        _featureKey = featureKey;
+        _playerFeatureImage.sprite = Game.Instance.PlayerFeatureDictionary[featureKey];
+        UpdateFeatureValueText();
+    }
 
+    public void UpdateFeatureValueText()
+    {
+        _playerFeatureText.text = _player.PlayerFeature[_featureKey].ToString();
     }
 }
+
+
+

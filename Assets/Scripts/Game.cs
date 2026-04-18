@@ -11,9 +11,9 @@ public class Game : MonoBehaviour
     private List<Player> _allPlayers;
     private Player _activePlayer;
     [SerializeField] private PathConteiner _pathConteiner;
-    [SerializeField] private SerializableDictionary<int, Sprite> _playerFeatureDictionary;
+    [SerializeField] private SerializableDictionary<string, Sprite> _playerFeatureDictionary;
     public List<Player> AllPlayers { get { return _allPlayers.OrderBy(x => x.PlayerID).ToList(); } }
-    public SerializableDictionary<int, Sprite> PlayerFeatureDictionary {  get { return _playerFeatureDictionary; } }
+    public SerializableDictionary<string, Sprite> PlayerFeatureDictionary {  get { return _playerFeatureDictionary; } }
 
     public void SetPathsToPlayers()
     {
@@ -61,10 +61,13 @@ public class Game : MonoBehaviour
         _pathConteiner.FindAllPath();
         GetAllPlayers();
         SetPathsToPlayers();
-
         foreach (Player player in _allPlayers)
         {
             player.MoveToStartPosition();
+            foreach (var item in _playerFeatureDictionary)
+            {
+                player.PlayerFeature.Add(item.Key, 1);
+            }
         }
 
     }
