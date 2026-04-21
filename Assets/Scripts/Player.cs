@@ -36,8 +36,11 @@ public class Player : MonoBehaviour
     }
     public void DecreaseFeatureValue(string featureKey, int value)
     {
-        PlayerFeature[featureKey] -= value;
-        Debug.Log($"Player {this.name} Feature {featureKey} - {_playerFeature[featureKey]}");
+        if (PlayerFeature[featureKey] != 0)
+        {
+            PlayerFeature[featureKey] -= value;
+            Debug.Log($"Player {this.name} Feature {featureKey} - {_playerFeature[featureKey]}");
+        }
     }
     public void SetPath(Path path)
     {

@@ -285,7 +285,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Playerview
   _playerImage: {fileID: 3458194121894080978}
   _playerName: {fileID: 5522133555703145856}
-  _playerSelect: {fileID: 0}
   _feature: {fileID: 2397354779705867641, guid: d8319ce907a620f458ca1714737849b1, type: 3}
   _playerFeatureConteiner: {fileID: 1204867676850091383}
 --- !u!1 &4215539342309715726
@@ -405,6 +404,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onMouseMiddleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  onMouseRightClick:
+    m_PersistentCalls:
+      m_Calls: []
+  fadePanel: {fileID: 3458194121894080978}
 --- !u!1 &5517428952600707629
 GameObject:
   m_ObjectHideFlags: 0
