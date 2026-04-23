@@ -1151,23 +1151,23 @@ MonoBehaviour:
   _playerFeatureDictionary:
     dictionaryList:
     - Key: 0
-      Value: {fileID: 3893031436278237338, guid: 10da773959e505a45adb3d9461a79b3d, type: 3}
+      Value: {fileID: -14120229372863419, guid: 238478bf6b5cc0e40a6952d084cba19e, type: 3}
       index: 0
       isKeyDuplicated: 0
     - Key: 1
-      Value: {fileID: 3893031436278237338, guid: 10da773959e505a45adb3d9461a79b3d, type: 3}
+      Value: {fileID: -14120229372863419, guid: 238478bf6b5cc0e40a6952d084cba19e, type: 3}
       index: 1
       isKeyDuplicated: 0
     - Key: 2
-      Value: {fileID: 3893031436278237338, guid: 10da773959e505a45adb3d9461a79b3d, type: 3}
+      Value: {fileID: -14120229372863419, guid: 238478bf6b5cc0e40a6952d084cba19e, type: 3}
       index: 2
       isKeyDuplicated: 0
     - Key: 3
-      Value: {fileID: 3893031436278237338, guid: 10da773959e505a45adb3d9461a79b3d, type: 3}
+      Value: {fileID: -14120229372863419, guid: 238478bf6b5cc0e40a6952d084cba19e, type: 3}
       index: 3
       isKeyDuplicated: 0
     - Key: 4
-      Value: {fileID: 3893031436278237338, guid: 10da773959e505a45adb3d9461a79b3d, type: 3}
+      Value: {fileID: -14120229372863419, guid: 238478bf6b5cc0e40a6952d084cba19e, type: 3}
       index: 4
       isKeyDuplicated: 0
 --- !u!4 &322644585

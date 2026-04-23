@@ -3,7 +3,6 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.UI;
-using System.Collections;
 using System.Threading.Tasks;
 
 public class MouseInputHandler : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerEnterHandler
@@ -17,7 +16,7 @@ public class MouseInputHandler : MonoBehaviour, IPointerClickHandler, IPointerDo
     private async void OnButtonClick()
     {
         fadePanel.DOFade(0.5f, 0.1f);
-        await Task.Delay(250);
+        await Task.Delay(200);
         fadePanel.DOFade(1f, 0.1f);
     }
     private void OnButtonDown()

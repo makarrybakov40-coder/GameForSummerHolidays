@@ -66,7 +66,7 @@ public class Game : MonoBehaviour
             player.MoveToStartPosition();
             foreach (var item in _playerFeatureDictionary)
             {
-                player.PlayerFeature.Add(item.Key, 1);
+                player.PlayerFeature.Add(item.Key, 0);
             }
         }
 

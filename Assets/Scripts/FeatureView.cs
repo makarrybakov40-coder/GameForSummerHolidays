@@ -13,10 +13,12 @@ public class FeatureView : MonoBehaviour
     public void IncreaseFeature()
     {
         _player.IncreaseFeatureValue(_featureKey, _featureIncreaseValue);
+        UpdateFeatureValueText();
     }
     public void DecreaseFeature()
     {
         _player.DecreaseFeatureValue(_featureKey, _featureIncreaseValue);
+        UpdateFeatureValueText();
     }
     public void PlayerFeatureRender(Player player, string featureKey)
     {
