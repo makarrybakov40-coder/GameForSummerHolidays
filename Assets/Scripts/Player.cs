@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private Path _playerPath;
     private PlayerMovement playerMovement;
     private Material _defaultMaterial;
-    private int currentPositionIndex = 0;
+    private int currentPositionIndex;
     private SpriteRenderer _spriteRenderer;
     private bool _isMoving = false;
     private Dictionary<string, int> _playerFeature = new Dictionary<string, int>();
@@ -60,16 +60,13 @@ public class Player : MonoBehaviour
     {
         if (_playerPath.PathPoints.Count > 0)
         {
-            // Ставим на первый круг
-            transform.position = _playerPath.PathPoints[0].transform.position;
-            currentPositionIndex = 0;
+            transform.position = _playerPath.PathPoints[currentPositionIndex].transform.position;
         }
 
     }
 
     private void Start()
     {
-
         playerMovement = GetComponent<PlayerMovement>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _defaultMaterial = _spriteRenderer.material;       

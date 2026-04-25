@@ -1,4 +1,5 @@
 using Project.Tools.DictionaryHelp;
+using SaveIsEasy;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -54,6 +55,7 @@ public class Game : MonoBehaviour
     {
         _instance = this;
         InitializeGame();
+        Debug.Log(SaveIsEasyAPI.SaveFolderPath);
     }
 
     private void InitializeGame()
