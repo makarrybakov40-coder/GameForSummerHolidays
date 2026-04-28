@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public int PlayerID { get { return _playerID; } }
     public bool IsMoving { get { return _isMoving; } }
     public Dictionary<string, int> PlayerFeature { get { return _playerFeature; } }
+    public int CurrentPositionIndex { get { return currentPositionIndex; } set { currentPositionIndex = value; } }
 
     public void IncreaseFeatureValue(string featureKey, int value)
     {

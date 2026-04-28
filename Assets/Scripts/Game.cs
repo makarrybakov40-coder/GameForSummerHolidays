@@ -54,6 +54,8 @@ public class Game : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        JSON_file json = new JSON_file();
+        json.Load();
         InitializeGame();
         Debug.Log(SaveIsEasyAPI.SaveFolderPath);
     }
