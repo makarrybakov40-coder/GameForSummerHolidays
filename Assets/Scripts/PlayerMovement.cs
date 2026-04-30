@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isMoving = false;
 
     [Header("Настройки движения")]
-    public float moveSpeed = 5f;
+    public float moveSpeed = 700f;
     public float pauseBetweenCircles = 0.1f;
     public bool canMoveBackwards = true;
     public bool IsMoving {  get { return isMoving; } }

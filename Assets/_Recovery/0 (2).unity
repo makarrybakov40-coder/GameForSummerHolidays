@@ -1206,18 +1206,6 @@ MonoBehaviour:
     - {x: 0, y: 0, z: 0}
     - {x: 0, y: 0, z: 0}
     - {x: 0, y: 0, z: 0}
-    speed:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    pauseBeetwenPoints:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
 --- !u!4 &348364117 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9144127517263394262, guid: e70ce1ec09f5942479f49343642db9b4, type: 3}

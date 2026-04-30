@@ -1,7 +1,9 @@
 using Project.Tools.DictionaryHelp;
 using SaveIsEasy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Game : MonoBehaviour
@@ -54,10 +56,9 @@ public class Game : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        InitializeGame();
         JSON_file json = new JSON_file();
         json.Load();
-        InitializeGame();
-        Debug.Log(SaveIsEasyAPI.SaveFolderPath);
     }
 
     private void InitializeGame()
