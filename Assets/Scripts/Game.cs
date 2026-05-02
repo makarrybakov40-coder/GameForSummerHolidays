@@ -12,7 +12,7 @@ public class Game : MonoBehaviour
     public static Game Instance { get { if (_instance == null) Debug.LogError("instance is NULL"); return _instance; } }
 
     private List<Player> _allPlayers;
-    private Player _activePlayer;
+    private Player _activePlayer;    
     [SerializeField] private PathConteiner _pathConteiner;
     [SerializeField] private SerializableDictionary<string, Sprite> _playerFeatureDictionary;
     public List<Player> AllPlayers { get { return _allPlayers.OrderBy(x => x.PlayerID).ToList(); } }
@@ -57,10 +57,12 @@ public class Game : MonoBehaviour
     {
         _instance = this;
         InitializeGame();
-        JSON_file json = new JSON_file();
-        json.Load();
+        
     }
-
+    private void OnApplicationQuit()
+    {
+        SaveGame();
+    }
     private void InitializeGame()
     {
         _pathConteiner.FindAllPath();
@@ -73,7 +75,20 @@ public class Game : MonoBehaviour
             {
                 player.PlayerFeature.Add(item.Key, 0);
             }
-        }
+        }       
+    }
+    private void SaveGame()
+    {
+        GameData gameData = new GameData();
+        SaveLoader saveLoader = new SaveLoader();
 
+        saveLoader.Save(gameData.GetPlayerData());
+    }
+    private void LoadGame()
+    {
+        SaveLoader saveLoader = new SaveLoader();
+        GameData gameData = new GameData();
+        saveLoader.Load();
+        //for (int i )
     }
 }

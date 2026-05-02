@@ -44,6 +44,10 @@ public class Player : MonoBehaviour
             Debug.Log($"Player {this.name} Feature {featureKey} - {_playerFeature[featureKey]}");
         }
     }
+    public void SetPlayerData()
+    {
+
+    }
     public void SetPath(Path path)
     {
         _playerPath = path;        
