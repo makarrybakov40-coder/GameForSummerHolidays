@@ -9,7 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int _playerID = 0;
+    [SerializeField] private int _playerID;
     [SerializeField] private Material _outlineMaterial;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private string _playerName;
@@ -44,9 +44,12 @@ public class Player : MonoBehaviour
             Debug.Log($"Player {this.name} Feature {featureKey} - {_playerFeature[featureKey]}");
         }
     }
-    public void SetPlayerData()
+    public void SetPlayerData(GameData gameData)
     {
-
+        _playerID = gameData.PlayerData[_playerID].PlayerID;
+        currentPositionIndex = gameData.PlayerData[_playerID].CurrentPosIndex;
+        _playerFeature = gameData.PlayerData[_playerID].PlayerFeature;
+        transform.position = gameData.PlayerData[_playerID].Vector;
     }
     public void SetPath(Path path)
     {
@@ -91,30 +94,4 @@ public class Player : MonoBehaviour
     {
         _isMoving = playerMovement.IsMoving;
     }
-
-
-
-
-    //void OnDrawGizmos()
-    //{
-    //    if (_playerPath.PathPoints.Count < 2) return;
-
-    //    Gizmos.color = playerColor;
-
-    //    // Рисуем линию пути
-    //    for (int i = 0; i < _playerPath.PathPoints.Count - 1; i++)
-    //    {
-    //        if (_playerPath.PathPoints[i] != null && _playerPath.PathPoints[i + 1] != null)
-    //        {
-    //            Gizmos.DrawLine(_playerPath.PathPoints[i].transform.position, _playerPath.PathPoints[i + 1].transform.position);
-    //        }
-    //    }
-
-    //    // Показываем текущую позицию
-    //    if (currentPositionIndex < _playerPath.PathPoints.Count && _playerPath.PathPoints[currentPositionIndex] != null)
-    //    {
-    //        Gizmos.color = Color.white;
-    //        Gizmos.DrawWireSphere(_playerPath.PathPoints[currentPositionIndex].transform.position, 0.2f);
-    //    }
-    //}
 }

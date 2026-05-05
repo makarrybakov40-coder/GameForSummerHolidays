@@ -10,7 +10,7 @@ public class GameData
         List<Player> players = Game.Instance.AllPlayers;
         for (int i = 0; i < Game.Instance.AllPlayers.Count; i++)
         {
-            PlayerData playerdata = new PlayerData(players[i].CurrentPositionIndex, players[i].PlayerID, players[i].PlayerFeature);
+            PlayerData playerdata = new PlayerData(players[i].CurrentPositionIndex, players[i].PlayerID, players[i].PlayerFeature, players[i].transform.position);
            _playerData.Add(playerdata);
         }
 
@@ -18,11 +18,11 @@ public class GameData
     }
     public void SetPlayerData()
     {
+        GetPlayerData();
         List<Player> players = Game.Instance.AllPlayers;
-        for (int i = 0; i < Game.Instance.AllPlayers.Count; i++)
+        for (int i = 0; i < _playerData.Count; i++)
         {
-            players[i].CurrentPositionIndex = _playerData[i].CurrentPosIndex;
-            players[i].CurrentPositionIndex = _playerData[i].CurrentPosIndex;
+            players[i].SetPlayerData(this);
         }
 
     }

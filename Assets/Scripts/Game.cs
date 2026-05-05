@@ -76,6 +76,7 @@ public class Game : MonoBehaviour
                 player.PlayerFeature.Add(item.Key, 0);
             }
         }       
+        LoadGame();
     }
     private void SaveGame()
     {
@@ -83,12 +84,25 @@ public class Game : MonoBehaviour
         SaveLoader saveLoader = new SaveLoader();
 
         saveLoader.Save(gameData.GetPlayerData());
+        for (int i = 0; i < gameData.PlayerData.Count; i++)
+        {
+            Debug.Log($"Player - {AllPlayers[i]}, PlayerID - {gameData.PlayerData[i].PlayerID}");
+            Debug.Log($"Player - {AllPlayers[i]}, CurrentPosIndex - {gameData.PlayerData[i].CurrentPosIndex}");
+            Debug.Log($"Player - {AllPlayers[i]}, PlayerFeature - {gameData.PlayerData[i].PlayerFeature[i.ToString()]}");
+            Debug.Log($"Player - {AllPlayers[i]}, PlayerFeature - {gameData.PlayerData[i].Vector}");
+        }
     }
     private void LoadGame()
     {
         SaveLoader saveLoader = new SaveLoader();
         GameData gameData = new GameData();
+        gameData.SetPlayerData();
         saveLoader.Load();
-        //for (int i )
+        for (int i = 0; i < gameData.PlayerData.Count; i++)
+        {
+            //Debug.Log(gameData.PlayerData[i].PlayerID);
+            //Debug.Log(gameData.PlayerData[i].PlayerFeature);
+            //Debug.Log(gameData.PlayerData[i].CurrentPosIndex);
+        }
     }
 }
