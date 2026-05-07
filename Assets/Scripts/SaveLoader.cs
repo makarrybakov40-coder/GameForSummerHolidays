@@ -3,15 +3,15 @@ using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-
+[System.Serializable]
 public class SaveLoader
 {
     private string GAMEID = "GAME1";
     public void Save(List<PlayerData> playerDatas)
-    {  
-      string data = JsonUtility.ToJson(playerDatas);
+    {
+        string data = JsonConvert.SerializeObject(playerDatas);
 
-      PlayerPrefs.SetString(GAMEID, data);
+        PlayerPrefs.SetString(GAMEID, data);
     }
 
    
@@ -19,10 +19,11 @@ public class SaveLoader
     {
         if (PlayerPrefs.HasKey(GAMEID))
         {
+            GameData gameData = new GameData();
+            //gameData.SetPlayerData();
             string data = PlayerPrefs.GetString(GAMEID);
-            return JsonUtility.FromJson<List<PlayerData>>(data);
-        } 
-
+            return JsonConvert.DeserializeObject<List<PlayerData>>(data);
+        }            
         return null;   
     }
 }

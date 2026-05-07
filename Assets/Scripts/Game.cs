@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+    GameData gameData = new GameData();
+    SaveLoader saveLoader = new SaveLoader();
     private static Game _instance;
     public static Game Instance { get { if (_instance == null) Debug.LogError("instance is NULL"); return _instance; } }
 
@@ -80,8 +82,6 @@ public class Game : MonoBehaviour
     }
     private void SaveGame()
     {
-        GameData gameData = new GameData();
-        SaveLoader saveLoader = new SaveLoader();
 
         saveLoader.Save(gameData.GetPlayerData());
         for (int i = 0; i < gameData.PlayerData.Count; i++)
@@ -94,15 +94,15 @@ public class Game : MonoBehaviour
     }
     private void LoadGame()
     {
-        SaveLoader saveLoader = new SaveLoader();
-        GameData gameData = new GameData();
-        gameData.SetPlayerData();
+        //gameData.SetPlayerData();
+        gameData.GetPlayerData();
         saveLoader.Load();
         for (int i = 0; i < gameData.PlayerData.Count; i++)
         {
-            //Debug.Log(gameData.PlayerData[i].PlayerID);
-            //Debug.Log(gameData.PlayerData[i].PlayerFeature);
-            //Debug.Log(gameData.PlayerData[i].CurrentPosIndex);
+            Debug.Log($"Player - {AllPlayers[i]}, PlayerID - {gameData.PlayerData[i].PlayerID}");
+            Debug.Log($"Player - {AllPlayers[i]}, CurrentPosIndex - {gameData.PlayerData[i].CurrentPosIndex}");
+            Debug.Log($"Player - {AllPlayers[i]}, PlayerFeature - {gameData.PlayerData[i].PlayerFeature[i.ToString()]}");
+            Debug.Log($"Player - {AllPlayers[i]}, PlayerFeature - {gameData.PlayerData[i].Vector}");
         }
     }
 }

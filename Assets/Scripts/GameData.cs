@@ -4,7 +4,7 @@ using System.Linq;
 public class GameData
 {
     private List<PlayerData> _playerData = new List<PlayerData>();
-    public List<PlayerData> PlayerData { get { return _playerData; } }
+    public List<PlayerData> PlayerData { get { return _playerData.OrderBy(x => x.PlayerID).ToList(); } }
     public List<PlayerData> GetPlayerData()
     {
         List<Player> players = Game.Instance.AllPlayers;
