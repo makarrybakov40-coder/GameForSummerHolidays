@@ -16,13 +16,13 @@ public class GameData
 
         return _playerData;
     }
-    public void SetPlayerData()
+    public void SetPlayerData(List<PlayerData> x)
     {
-        GetPlayerData();
+        //GetPlayerData();
         List<Player> players = Game.Instance.AllPlayers;
-        for (int i = 0; i < _playerData.Count; i++)
+        for (int i = 0; i < players.Count; i++)
         {
-            players[i].SetPlayerData(this);
+            players[i].SetPlayerData(x[i]);
         }
 
     }

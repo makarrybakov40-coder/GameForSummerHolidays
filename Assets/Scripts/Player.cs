@@ -44,12 +44,11 @@ public class Player : MonoBehaviour
             Debug.Log($"Player {this.name} Feature {featureKey} - {_playerFeature[featureKey]}");
         }
     }
-    public void SetPlayerData(GameData gameData)
+    public void SetPlayerData(PlayerData playerData)
     {
-        _playerID = gameData.PlayerData[_playerID].PlayerID;
-        currentPositionIndex = gameData.PlayerData[_playerID].CurrentPosIndex;
-        _playerFeature = gameData.PlayerData[_playerID].PlayerFeature;
-        transform.position = gameData.PlayerData[_playerID].Vector;
+        _playerID = playerData.PlayerID;
+        currentPositionIndex = playerData.CurrentPosIndex;
+        _playerFeature = playerData.PlayerFeature;
     }
     public void SetPath(Path path)
     {

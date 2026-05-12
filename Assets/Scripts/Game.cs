@@ -79,30 +79,18 @@ public class Game : MonoBehaviour
             }
         }       
         LoadGame();
+        foreach (Player player in _allPlayers)
+        {
+            player.MoveToStartPosition();
+        }
     }
     private void SaveGame()
     {
-
         saveLoader.Save(gameData.GetPlayerData());
-        for (int i = 0; i < gameData.PlayerData.Count; i++)
-        {
-            Debug.Log($"Player - {AllPlayers[i]}, PlayerID - {gameData.PlayerData[i].PlayerID}");
-            Debug.Log($"Player - {AllPlayers[i]}, CurrentPosIndex - {gameData.PlayerData[i].CurrentPosIndex}");
-            Debug.Log($"Player - {AllPlayers[i]}, PlayerFeature - {gameData.PlayerData[i].PlayerFeature[i.ToString()]}");
-            Debug.Log($"Player - {AllPlayers[i]}, PlayerFeature - {gameData.PlayerData[i].Vector}");
-        }
     }
     private void LoadGame()
     {
-        //gameData.SetPlayerData();
-        gameData.GetPlayerData();
-        saveLoader.Load();
-        for (int i = 0; i < gameData.PlayerData.Count; i++)
-        {
-            Debug.Log($"Player - {AllPlayers[i]}, PlayerID - {gameData.PlayerData[i].PlayerID}");
-            Debug.Log($"Player - {AllPlayers[i]}, CurrentPosIndex - {gameData.PlayerData[i].CurrentPosIndex}");
-            Debug.Log($"Player - {AllPlayers[i]}, PlayerFeature - {gameData.PlayerData[i].PlayerFeature[i.ToString()]}");
-            Debug.Log($"Player - {AllPlayers[i]}, PlayerFeature - {gameData.PlayerData[i].Vector}");
-        }
+        var x = saveLoader.Load();
+        gameData.SetPlayerData(x);
     }
 }
