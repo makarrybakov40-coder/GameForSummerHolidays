@@ -1,14 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BonusPoint : Point
 {
-    [SerializeField] private GameObject _gameObject;
+    GameData gameData = new GameData();
+    SaveLoader saveLoader = new SaveLoader();
+    [SerializeField] private int _scene;
     public override void PointAction()
     {
-
-    }
-    private new void Start()
-    {
-
+        saveLoader.Save(gameData.GetPlayerData());
+        SceneManager.LoadScene(_scene);
     }
 }

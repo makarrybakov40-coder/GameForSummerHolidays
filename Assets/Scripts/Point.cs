@@ -9,7 +9,7 @@ abstract public class Point : MonoBehaviour
 
     protected int _playerID;
     protected int _positionNumber;   
-    protected Color hoverColor = Color.yellow;
+    protected Color hoverColor = Color.green;
     protected SpriteRenderer _spriteRenderer;
     protected Color _originalColor;   
 
