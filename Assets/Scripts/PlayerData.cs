@@ -8,14 +8,11 @@ public class PlayerData
     public int CurrentPosIndex;
     public int PlayerID;
     public Dictionary<string, int> PlayerFeature;
-    [JsonIgnore]
-    public Vector3 Vector;
 
-    public PlayerData(int currentPosIndex, int playerID, Dictionary<string, int> playerFeature, Vector3 vector3)
+    public PlayerData(int currentPosIndex, int playerID, Dictionary<string, int> playerFeature)
     {
         CurrentPosIndex = currentPosIndex;
         PlayerID = playerID;
         PlayerFeature = playerFeature;
-        Vector = vector3;
     }
 }

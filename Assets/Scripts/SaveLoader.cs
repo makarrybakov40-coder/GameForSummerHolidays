@@ -26,4 +26,9 @@ public class SaveLoader
         }            
         return null;   
     }
+
+    public void DeleteSaveFile() 
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }

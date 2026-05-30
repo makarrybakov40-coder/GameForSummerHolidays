@@ -5,11 +5,14 @@ using UnityEngine;
 public class PathPoint : Point
 {
     [SerializeField] private int _numberSize = 20;
-    [SerializeField] private float _numberWidth = 0.3f; 
+    [SerializeField] private float _numberWidth = 0.3f;
+    GameData gameData = new GameData();
+    SaveLoader saveLoader = new SaveLoader();
 
     public override void PointAction()
     {
         Game.Instance.PlayerUnSelect();
+        saveLoader.Save(gameData.GetPlayerData());
     }
 
 

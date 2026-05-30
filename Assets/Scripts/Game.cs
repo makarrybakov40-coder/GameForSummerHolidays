@@ -55,11 +55,23 @@ public class Game : MonoBehaviour
         return _activePlayer;
     }
 
+    public Player LastActivePlayer()
+    {
+        Player lastActivePlayer = _activePlayer;
+        return lastActivePlayer;
+    }
+
     private void Awake()
     {
+        Debug.Log(gameObject.name);
+        //if (_instance != null) 
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}     
         _instance = this;
         InitializeGame();
-        
+        //DontDestroyOnLoad(gameObject);
     }
     private void OnApplicationQuit()
     {
@@ -72,16 +84,15 @@ public class Game : MonoBehaviour
         SetPathsToPlayers();
         foreach (Player player in _allPlayers)
         {
-            player.MoveToStartPosition();
             foreach (var item in _playerFeatureDictionary)
             {
                 player.PlayerFeature.Add(item.Key, 0);
             }
-        }       
+        }
         LoadGame();
         foreach (Player player in _allPlayers)
         {
-            player.MoveToStartPosition();
+            player.MoveToCurrentPosition();
         }
     }
     private void SaveGame()
@@ -91,6 +102,10 @@ public class Game : MonoBehaviour
     private void LoadGame()
     {
         var x = saveLoader.Load();
+        if (x == null)
+        {
+            return;
+        }
         gameData.SetPlayerData(x);
     }
 }

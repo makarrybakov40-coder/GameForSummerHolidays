@@ -64,16 +64,4 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log($"Достигнут круг {currentPositionIndex + 1}");
         target.PointAction();
     }
-
-
-
-    //public void TeleportToCircle(int circleIndex)
-    //{
-    //    if (circleIndex >= 0 && circleIndex < pathPoints.Count)
-    //    {
-    //        currentPositionIndex = circleIndex;
-    //        transform.position = pathPoints[circleIndex].position;
-    //    }
-    //}
-
 }

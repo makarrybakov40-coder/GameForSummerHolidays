@@ -10,7 +10,7 @@ public class GameData
         List<Player> players = Game.Instance.AllPlayers;
         for (int i = 0; i < Game.Instance.AllPlayers.Count; i++)
         {
-            PlayerData playerdata = new PlayerData(players[i].CurrentPositionIndex, players[i].PlayerID, players[i].PlayerFeature, players[i].transform.position);
+            PlayerData playerdata = new PlayerData(players[i].CurrentPositionIndex, players[i].PlayerID, players[i].PlayerFeature);
            _playerData.Add(playerdata);
         }
 

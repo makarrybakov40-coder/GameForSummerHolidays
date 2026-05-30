@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     public int PlayerID { get { return _playerID; } }
     public bool IsMoving { get { return _isMoving; } }
     public Dictionary<string, int> PlayerFeature { get { return _playerFeature; } }
-    public int CurrentPositionIndex { get { return currentPositionIndex; } set { currentPositionIndex = value; } }
+    public int CurrentPositionIndex { get { return currentPositionIndex; }}
     public PlayerMovement PlayerMovement { get { return playerMovement; } }
 
     public void IncreaseFeatureValue(string featureKey, int value)
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void MoveToStartPosition()
+    public void MoveToCurrentPosition()
     {
         if (_playerPath.PathPoints.Count > 0)
         {
