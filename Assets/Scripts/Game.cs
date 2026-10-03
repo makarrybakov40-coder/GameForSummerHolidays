@@ -14,7 +14,8 @@ public class Game : MonoBehaviour
     public static Game Instance { get { if (_instance == null) Debug.LogError("instance is NULL"); return _instance; } }
 
     private List<Player> _allPlayers;
-    private Player _activePlayer;    
+    private Player _activePlayer;
+    private Player _lastActivePlayer;
     [SerializeField] private PathConteiner _pathConteiner;
     [SerializeField] private SerializableDictionary<string, Sprite> _playerFeatureDictionary;
     public List<Player> AllPlayers { get { return _allPlayers.OrderBy(x => x.PlayerID).ToList(); } }
@@ -38,6 +39,7 @@ public class Game : MonoBehaviour
         PlayerUnSelect();
         _activePlayer = player;
         _activePlayer.EnableOutLine();
+        _lastActivePlayer = player;
     }
 
     public void PlayerUnSelect()
@@ -57,8 +59,7 @@ public class Game : MonoBehaviour
 
     public Player LastActivePlayer()
     {
-        Player lastActivePlayer = _activePlayer;
-        return lastActivePlayer;
+        return _lastActivePlayer;
     }
 
     private void Awake()

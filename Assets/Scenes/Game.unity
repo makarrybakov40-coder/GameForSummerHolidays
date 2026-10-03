@@ -1923,6 +1923,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 227906348}
     m_Modifications:
     - target: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+      propertyPath: _scene
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
       propertyPath: _pointSprite
       value: 
       objectReference: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}

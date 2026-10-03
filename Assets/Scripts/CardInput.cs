@@ -9,6 +9,10 @@ public class CardInput : MonoBehaviour
         {
             MouseCLickAction();
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            MouseCLickAction1();
+        }
     }
 
     private void MouseCLickAction()
@@ -23,6 +27,22 @@ public class CardInput : MonoBehaviour
         if (hit.collider.TryGetComponent(out ChangeSprite changeSprite)) 
         {
             changeSprite.ChangeSpriteToOriginal();
+        }
+
+
+    }
+    private void MouseCLickAction1()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+        if (hit.collider == null)
+        {
+            return;
+        }
+        if (hit.collider.TryGetComponent(out ChangeSprite changeSprite))
+        {
+            changeSprite.ChangeSpriteToSmile();
         }
 
 
