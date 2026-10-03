@@ -523,6 +523,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 227906348}
     m_Modifications:
+    - target: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+      propertyPath: _pointSprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
     - target: {fileID: 5340588286173890566, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
       propertyPath: m_Name
       value: BonusPoint (16)
@@ -904,6 +908,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 9144127517263394262, guid: e70ce1ec09f5942479f49343642db9b4, type: 3}
   m_PrefabInstance: {fileID: 1992185313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &250586113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5340588286173890566, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+  m_PrefabInstance: {fileID: 474737681}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &255658148 stripped
 Transform:
@@ -1964,7 +1973,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5340588286173890566, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1416343699}
   m_SourcePrefab: {fileID: 100100000, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
 --- !u!1 &475572015
 GameObject:
@@ -2738,6 +2750,10 @@ PrefabInstance:
       value: Points
       objectReference: {fileID: 0}
     - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
+      propertyPath: Point
+      value: 
+      objectReference: {fileID: 1259480783}
+    - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
       propertyPath: _delay
       value: 0.5
       objectReference: {fileID: 0}
@@ -2937,6 +2953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveToPoint (44)
       objectReference: {fileID: 0}
+    - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
+      propertyPath: Point
+      value: 
+      objectReference: {fileID: 1534895432}
     - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
       propertyPath: pathPoint
       value: 
@@ -3391,6 +3411,10 @@ PrefabInstance:
       value: MoveToPoint (13)
       objectReference: {fileID: 0}
     - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
+      propertyPath: Point
+      value: 
+      objectReference: {fileID: 1787001298}
+    - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
       propertyPath: _delay
       value: 0.5
       objectReference: {fileID: 0}
@@ -3809,6 +3833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveToPoint (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
+      propertyPath: Point
+      value: 
+      objectReference: {fileID: 1523095110}
     - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
       propertyPath: pathPoint
       value: 
@@ -4450,6 +4478,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5946927062219845059, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
   m_PrefabInstance: {fileID: 445913843}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1181288581 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+  m_PrefabInstance: {fileID: 445913843}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117c1ea30e049314697178e70f34426e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BonusPoint
 --- !u!1 &1212377661
 GameObject:
   m_ObjectHideFlags: 0
@@ -4741,6 +4780,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5946927062219845059, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
   m_PrefabInstance: {fileID: 474737681}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1416343699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250586113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984cf1020370e124399155bd1f215149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveToPoint
+  _pointSprite: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
+  Point: {fileID: 1431211050}
+  _delay: 0.5
 --- !u!1001 &1421326034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4753,6 +4807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveToPoint (50)
       objectReference: {fileID: 0}
+    - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
+      propertyPath: Point
+      value: 
+      objectReference: {fileID: 1181288581}
     - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
       propertyPath: pathPoint
       value: 
@@ -4818,6 +4876,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
+--- !u!114 &1431211050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 15298156058416136, guid: e70ce1ec09f5942479f49343642db9b4, type: 3}
+  m_PrefabInstance: {fileID: 841766179}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8143cfed4df924ab3fd6ebb77766bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PathPoint
 --- !u!1001 &1445546938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4905,6 +4974,10 @@ PrefabInstance:
       value: MoveToPoint (55)
       objectReference: {fileID: 0}
     - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
+      propertyPath: Point
+      value: 
+      objectReference: {fileID: 1686859008}
+    - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
       propertyPath: pathPoint
       value: 
       objectReference: {fileID: 1686859008}
@@ -4984,11 +5057,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5946927062219845059, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
   m_PrefabInstance: {fileID: 640825766}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1523095110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+  m_PrefabInstance: {fileID: 640825766}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117c1ea30e049314697178e70f34426e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BonusPoint
 --- !u!4 &1534895431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5946927062219845059, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
   m_PrefabInstance: {fileID: 1605984360}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1534895432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+  m_PrefabInstance: {fileID: 1605984360}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117c1ea30e049314697178e70f34426e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BonusPoint
 --- !u!1001 &1538770215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5464,6 +5559,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveToPoint (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
+      propertyPath: Point
+      value: 
+      objectReference: {fileID: 504422828}
     - target: {fileID: 5645066775938730420, guid: 94f4c7f12105a5844836b2ce49c6a990, type: 3}
       propertyPath: pathPoint
       value: 
@@ -5950,6 +6049,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5946927062219845059, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
   m_PrefabInstance: {fileID: 149251536}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1787001298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+  m_PrefabInstance: {fileID: 149251536}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117c1ea30e049314697178e70f34426e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BonusPoint
 --- !u!4 &1791303107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9144127517263394262, guid: e70ce1ec09f5942479f49343642db9b4, type: 3}

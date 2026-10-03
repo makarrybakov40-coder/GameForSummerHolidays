@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MoveToPoint : Point
 {
-    public PathPoint pathPoint;
+    public Point Point;
     [SerializeField] private float _delay;
     GameData gameData = new GameData();
     SaveLoader saveLoader = new SaveLoader();
@@ -18,7 +18,7 @@ public class MoveToPoint : Point
     {
         
         yield return new WaitForSeconds(_delay);
-        Game.Instance.ActivePlayer().Move(pathPoint);
+        Game.Instance.ActivePlayer().Move(Point);
         saveLoader.Save(gameData.GetPlayerData());
     }
 

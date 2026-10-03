@@ -140,6 +140,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117c1ea30e049314697178e70f34426e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BonusPoint
-  _pointSprite: {fileID: 0}
-  _gameObject: {fileID: 0}
+  _pointSprite: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
   _scene: 1
