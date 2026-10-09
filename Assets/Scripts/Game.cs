@@ -16,6 +16,7 @@ public class Game : MonoBehaviour
     private List<Player> _allPlayers;
     private Player _activePlayer;
     private Player _lastActivePlayer;
+    private int _lastActivePlayerID;
     [SerializeField] private PathConteiner _pathConteiner;
     [SerializeField] private SerializableDictionary<string, Sprite> _playerFeatureDictionary;
     public List<Player> AllPlayers { get { return _allPlayers.OrderBy(x => x.PlayerID).ToList(); } }
@@ -57,9 +58,10 @@ public class Game : MonoBehaviour
         return _activePlayer;
     }
 
-    public Player LastActivePlayer()
+    public int LastActivePlayer()
     {
-        return _lastActivePlayer;
+        _lastActivePlayerID = _lastActivePlayer.PlayerID;
+        return _lastActivePlayerID;
     }
 
     private void Awake()
@@ -109,4 +111,5 @@ public class Game : MonoBehaviour
         }
         gameData.SetPlayerData(x);
     }
+
 }

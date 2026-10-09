@@ -2,15 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class ChangeSprite : MonoBehaviour
+public class CardGame : MonoBehaviour
 {
     [SerializeField] private List<GameObject> CardFace;
     [SerializeField] private List<GameObject> CardBack;
-    //private GameObject CardWinner;
+    private int CardWinnerID;
 
     private void Start()
     {
-        //CardWinner = Game.Instance.LastActivePlayer();
+        CardWinnerID = Game.Instance.LastActivePlayer();
         ChangeSpriteToSmile();
     }
     public void ChangeSpriteToSmile()

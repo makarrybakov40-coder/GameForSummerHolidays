@@ -24,9 +24,9 @@ public class CardInput : MonoBehaviour
         {
             return;
         }
-        if (hit.collider.TryGetComponent(out ChangeSprite changeSprite)) 
+        if (hit.collider.TryGetComponent(out CardGame cardGame)) 
         {
-            changeSprite.ChangeSpriteToOriginal();
+            cardGame.ChangeSpriteToOriginal();
         }
 
 
@@ -40,9 +40,9 @@ public class CardInput : MonoBehaviour
         {
             return;
         }
-        if (hit.collider.TryGetComponent(out ChangeSprite changeSprite))
+        if (hit.collider.TryGetComponent(out CardGame cardGame))
         {
-            changeSprite.ChangeSpriteToSmile();
+            cardGame.ChangeSpriteToSmile();
         }
 
 

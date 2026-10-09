@@ -27,7 +27,7 @@ public class MouseInputHandler : MonoBehaviour, IPointerClickHandler, IPointerDo
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            //Debug.Log("Left click");
+            Debug.Log("Left click");
             onMouseLeftClick?.Invoke();
             OnButtonClick();
         }
@@ -40,7 +40,7 @@ public class MouseInputHandler : MonoBehaviour, IPointerClickHandler, IPointerDo
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            //Debug.Log("Right click");
+            Debug.Log("Right click");
             onMouseRightClick?.Invoke();
             eventData.Reset();
             OnButtonClick();
