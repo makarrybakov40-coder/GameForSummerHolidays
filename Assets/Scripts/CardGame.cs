@@ -10,7 +10,7 @@ public class CardGame : MonoBehaviour
 
     private void Start()
     {
-        CardWinnerID = Game.Instance.LastActivePlayer();
+        CardWinnerID = DontDestroy.lastPlayerID;
         ChangeSpriteToSmile();
     }
     public void ChangeSpriteToSmile()

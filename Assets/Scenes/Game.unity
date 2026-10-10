@@ -527,6 +527,10 @@ PrefabInstance:
       propertyPath: _pointSprite
       value: 
       objectReference: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
+    - target: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+      propertyPath: _sceneChanger
+      value: 
+      objectReference: {fileID: 1473355405}
     - target: {fileID: 5340588286173890566, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
       propertyPath: m_Name
       value: BonusPoint (16)
@@ -1084,6 +1088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GenerateObjectsAtStart
   _playerConteiner: {fileID: 526155031}
   _playerView: {fileID: 6883458288453455690, guid: 83fabb26e6cfd204da8b2479eb7049a3, type: 3}
+  _cardView: {fileID: 0}
 --- !u!1 &284385110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,6 +1169,10 @@ PrefabInstance:
       propertyPath: _pointSprite
       value: 
       objectReference: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
+    - target: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+      propertyPath: _sceneChanger
+      value: 
+      objectReference: {fileID: 1473355405}
     - target: {fileID: 5340588286173890566, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
       propertyPath: m_Name
       value: BonusPoint (12)
@@ -1734,6 +1743,10 @@ PrefabInstance:
       propertyPath: _pointSprite
       value: 
       objectReference: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
+    - target: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+      propertyPath: _sceneChanger
+      value: 
+      objectReference: {fileID: 1473355405}
     - target: {fileID: 5340588286173890566, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
       propertyPath: m_Name
       value: BonusPoint (48)
@@ -1930,6 +1943,10 @@ PrefabInstance:
       propertyPath: _pointSprite
       value: 
       objectReference: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
+    - target: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+      propertyPath: _sceneChanger
+      value: 
+      objectReference: {fileID: 1473355405}
     - target: {fileID: 5340588286173890566, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
       propertyPath: m_Name
       value: BonusPoint (23)
@@ -2623,6 +2640,10 @@ PrefabInstance:
       propertyPath: _pointSprite
       value: 
       objectReference: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
+    - target: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+      propertyPath: _sceneChanger
+      value: 
+      objectReference: {fileID: 1473355405}
     - target: {fileID: 5340588286173890566, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
       propertyPath: m_Name
       value: BonusPoint (28)
@@ -2688,6 +2709,10 @@ PrefabInstance:
       propertyPath: _pointSprite
       value: 
       objectReference: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
+    - target: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+      propertyPath: _sceneChanger
+      value: 
+      objectReference: {fileID: 1473355405}
     - target: {fileID: 5340588286173890566, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
       propertyPath: m_Name
       value: BonusPoint (7)
@@ -3958,6 +3983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c7de4b4760a7e4892f983ab20259c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSelector
+  _sceneChanger: {fileID: 0}
   SceneIndex: 1
 --- !u!114 &1045930899
 MonoBehaviour:
@@ -4298,6 +4324,10 @@ PrefabInstance:
       propertyPath: _pointSprite
       value: 
       objectReference: {fileID: -2413806693520163455, guid: 7ea91b705d1d5044e8420a66ad1fd21f, type: 3}
+    - target: {fileID: 685602448359740142, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
+      propertyPath: _sceneChanger
+      value: 
+      objectReference: {fileID: 1473355405}
     - target: {fileID: 5340588286173890566, guid: 1d5d0dc710a133a4ab7ec25572af4e83, type: 3}
       propertyPath: m_Name
       value: BonusPoint (32)
@@ -4965,6 +4995,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9144127517263394262, guid: e70ce1ec09f5942479f49343642db9b4, type: 3}
   m_PrefabInstance: {fileID: 1061466760}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1473355404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1473355406}
+  - component: {fileID: 1473355405}
+  m_Layer: 0
+  m_Name: SceneChanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1473355405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473355404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63389ecb1c0aab42b3ee8cdf65954e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
+--- !u!4 &1473355406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473355404}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3315.866, y: 368.16388, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1474527099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5279,6 +5353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c7de4b4760a7e4892f983ab20259c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSelector
+  _sceneChanger: {fileID: 1473355405}
   SceneIndex: 0
 --- !u!1001 &1554393025
 PrefabInstance:
@@ -7304,3 +7379,4 @@ SceneRoots:
   - {fileID: 1887155724}
   - {fileID: 1548714218}
   - {fileID: 284385113}
+  - {fileID: 1473355406}

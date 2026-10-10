@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSelector : MonoBehaviour
 {
+    [SerializeField] private SceneChanger _sceneChanger;
     private Player _playerIndex;
     public Player PlayerIndex { get { return _playerIndex; } set { _playerIndex = value; } }
     public int SceneIndex;
@@ -12,6 +13,6 @@ public class PlayerSelector : MonoBehaviour
     }
     public void NextScene()
     {
-        SceneManager.LoadScene(SceneIndex);
+        _sceneChanger.ChangeScene(SceneIndex);
     }
 }

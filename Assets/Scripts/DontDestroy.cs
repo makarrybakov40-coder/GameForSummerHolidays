@@ -1,18 +1,6 @@
-using UnityEngine;
-
-public class DontDestroy : MonoBehaviour
+using System.Collections.Generic;
+public static class DontDestroy
 {
-    public static DontDestroy Instance;
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject); // Объект не уничтожается при смене сцены
-    }
+    public static int lastPlayerID;
+    public static List<Player> players;
 }
