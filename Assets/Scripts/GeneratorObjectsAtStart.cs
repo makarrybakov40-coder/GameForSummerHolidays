@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenerateObjectsAtStart : MonoBehaviour
+public class GeneratorObjectsAtStart : MonoBehaviour
 {
     //[SerializeField] private List<Player> _generatePlayers;
     [SerializeField] private GameObject _playerConteiner;
@@ -14,22 +14,22 @@ public class GenerateObjectsAtStart : MonoBehaviour
         {
             if (_playerView != null && _cardView == null)
             {
-                AddPlayerPlayerView(Game.Instance.AllPlayers[i]);
+                AddPlayerView(Game.Instance.AllPlayers[i]);
 
             }
             else if (_cardView != null && _playerView == null)
             {
-                AddPlayerCardView(Game.Instance.AllPlayers[i]);
+                AddCardView(DontDestroy.players[i]);
             }
         } 
     }
 
-    private void AddPlayerPlayerView(Player player)
+    private void AddPlayerView(Player player)
     {
         var view = Instantiate(_playerView, _playerConteiner.transform);
         view.PlayerRender(player);
     }
-    private void AddPlayerCardView(Player player)
+    private void AddCardView(Player player)
     {
         var view = Instantiate(_cardView, _playerConteiner.transform);
         view.PlayerRender(player);

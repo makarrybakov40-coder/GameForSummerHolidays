@@ -4,30 +4,16 @@ using System.Collections.Generic;
 
 public class CardGame : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> CardFace;
-    [SerializeField] private List<GameObject> CardBack;
-    private int CardWinnerID;
+    private List<Card> _cards;
+    private int _cardWinnerID;
 
     private void Start()
     {
-        CardWinnerID = DontDestroy.lastPlayerID;
-        ChangeSpriteToSmile();
+        _cardWinnerID = DontDestroy.lastPlayerID;
     }
-    public void ChangeSpriteToSmile()
+    public void ChangeCard(int index)
     {
-        for (int i = 0; i < CardFace.Count; i++)
-        {
-            CardFace[i].SetActive(true);
-            CardBack[i].SetActive(false);
-        }
-    }
-    public void ChangeSpriteToOriginal()
-    {
-        for (int i = 0; i < CardFace.Count; i++)
-        {
-            CardFace[i].SetActive(false);
-            CardBack[i].SetActive(true);
-        }
+       //_cards.Add()
     }
 
 }
