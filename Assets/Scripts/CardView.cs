@@ -5,29 +5,26 @@ using UnityEngine.UI;
 public class CardView : MonoBehaviour
 {
     private Sprite _sprite;
-    [SerializeField] private SpriteRenderer _playerFace;
-    [SerializeField] private SpriteRenderer _playerBack;
-    //[SerializeField] private Sprite _playerCard;
+    [SerializeField] private Sprite _playerFace;
+    [SerializeField] private SpriteRenderer _playerFaceRender;
     private Player _player;
     private int _playerID;
     private CardGame _cardGame;
 
+
     private void Start()
     {
-        _playerFace.sprite = GetComponent<Sprite>();
-        _playerFace.sprite = _sprite;
-        _playerBack.sprite = GetComponent<Sprite>();
-        _playerBack.sprite = _sprite;
-       // _playerCard = GetComponent<Sprite>();
-       // _playerCard = _sprite;
+
+        _playerFaceRender = GetComponent<SpriteRenderer>();
+        _playerFaceRender.sprite = _sprite;
 
     }
-    public void PlayerRender(Player player)
+    public void CardRender(Player player)
     {
         _player = player;
-        _playerFace.sprite = player.Sprite;
+        _playerFace = player.Sprite;
         _playerID = player.PlayerID;
-        //_cardGame.ChangeCard(_playerID);
+        _playerFaceRender.sprite = _playerFace;
     }
 
 }
