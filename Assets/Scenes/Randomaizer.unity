@@ -1451,7 +1451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67c8bf7568109249a357d0323902fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParentCardGenerator
-  _cardObject: {fileID: 5662330831797755959, guid: 3c99ffdc5d2150c4190b9c3b9637da76, type: 3}
   _cardConteiner: {fileID: 1896442174}
   _cardView: {fileID: 2598456938937811933, guid: cb4619af02719264985c32da1cbb1f4e, type: 3}
 --- !u!1 &1952306195
