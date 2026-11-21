@@ -1088,7 +1088,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GenerateObjectsAtStart
   _playerConteiner: {fileID: 526155031}
   _playerView: {fileID: 6883458288453455690, guid: 83fabb26e6cfd204da8b2479eb7049a3, type: 3}
-  _cardView: {fileID: 0}
 --- !u!1 &284385110
 GameObject:
   m_ObjectHideFlags: 0

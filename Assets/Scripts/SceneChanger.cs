@@ -6,9 +6,15 @@ public class SceneChanger : MonoBehaviour
     SaveLoader saveLoader = new SaveLoader();
     public void ChangeScene(int SceneIndex)
     {
-        DontDestroy.lastPlayerID = Game.Instance.LastActivePlayer();
-        DontDestroy.players = Game.Instance.AllPlayers;
-        saveLoader.Save(gameData.GetPlayerData());
+        var curScene = SceneManager.GetActiveScene();
+        if (curScene.buildIndex == 0)
+        {
+            DontDestroy.lastPlayerID = Game.Instance.LastActivePlayer();
+            DontDestroy.players = Game.Instance.AllPlayers;
+            saveLoader.Save(gameData.GetPlayerData());
+        }
         SceneManager.LoadScene(SceneIndex);
+        
+      
     }
 }

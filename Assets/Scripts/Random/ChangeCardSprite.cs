@@ -8,6 +8,7 @@ public class ChangeCardSprite : MonoBehaviour
     void Start()
     {
         ChangeSpriteToSmile();
+        this.GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame

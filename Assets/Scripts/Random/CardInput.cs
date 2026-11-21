@@ -28,6 +28,10 @@ public class CardInput : MonoBehaviour
         {
             changeCardSprite.ChangeSpriteToOriginal();
         }
+        if (hit.collider.TryGetComponent(out TestChangeSprite testChangeSprite))
+        {
+            testChangeSprite.ChangeSpriteToOriginal();
+        }
 
 
     }
@@ -43,6 +47,10 @@ public class CardInput : MonoBehaviour
         if (hit.collider.TryGetComponent(out ChangeCardSprite changeCardSprite))
         {
             changeCardSprite.ChangeSpriteToSmile();
+        }
+        if (hit.collider.TryGetComponent(out TestChangeSprite testChangeSprite))
+        {
+            testChangeSprite.ChangeSpriteToSmile();
         }
 
 

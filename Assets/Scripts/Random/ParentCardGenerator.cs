@@ -6,6 +6,8 @@ public class ParentCardGenerator : MonoBehaviour
     [SerializeField] private GameObject _cardConteiner;
     [SerializeField] private CardView _cardView;
     private List<Vector3> _cardSpawn = new List<Vector3>();
+    private List<Sprite> _cardFace = new List<Sprite>();
+    public List<Sprite> CardFace { get { return _cardFace; } }
     void Start()
     {
         Camera cam = Camera.main;
@@ -24,12 +26,10 @@ public class ParentCardGenerator : MonoBehaviour
             _cardSpawn.Add(worldPos + plusPos * i);
             _cardSpawn.Add(worldPos + plusPos * -i);
         }
-        foreach (var player in DontDestroy.players)
-        {
-            Debug.Log(plusPos);
-        }
+              
         for (int i = 0; i < DontDestroy.players.Count; i++)
         {
+           
             AddCardView(DontDestroy.players[i], _cardSpawn[i]);
         }
     }
@@ -41,7 +41,8 @@ public class ParentCardGenerator : MonoBehaviour
     private void AddCardView(Player player, Vector3 cardSpawn)
     {
         var view = Instantiate(_cardView, cardSpawn, Quaternion.identity);
+        _cardFace.Add(view.PlayerFace);
+        DontDestroy.cardSprites = _cardFace;
         view.CardRender(player);
-        //_cardView.GetComponent<>
     }
 }

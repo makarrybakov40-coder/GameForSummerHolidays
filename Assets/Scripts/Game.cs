@@ -65,15 +65,14 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log(gameObject.name);
-        //if (_instance != null) 
+        //if (_instance != null && _instance != this )
         //{
         //    Destroy(gameObject);
         //    return;
-        //}     
+        //}
         _instance = this;
         InitializeGame();
-        //DontDestroyOnLoad(gameObject);
+        //aDontDestroyOnLoad(gameObject);
     }
     private void OnApplicationQuit()
     {
