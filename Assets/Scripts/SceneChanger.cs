@@ -10,7 +10,7 @@ public class SceneChanger : MonoBehaviour
         if (curScene.buildIndex == 0)
         {
             DontDestroy.lastPlayerID = Game.Instance.LastActivePlayer();
-            DontDestroy.players = Game.Instance.AllPlayers;
+            DontDestroy.cards = gameData.GetCardData();
             saveLoader.Save(gameData.GetPlayerData());
         }
         SceneManager.LoadScene(SceneIndex);

@@ -20,12 +20,18 @@ public class CardView : MonoBehaviour
     }
     public void CardRender(Player player)
     {
-        test = GetComponentInChildren<TestChangeSprite>();
-        //_playerFaceRender = GetComponent<SpriteRenderer>();
-        //_playerFaceRender.sprite = _sprite;
         _player = player;
         _playerFace = player.Sprite;
         _playerID = player.PlayerID;
+        test.ChangeValue(_playerFace);
+    }
+    public void SetCardData(CardData cardData)
+    {
+        test = GetComponentInChildren<TestChangeSprite>();
+        _playerFace = cardData.PlayerSprites;
+        _playerID = cardData.PlayerID;
+        Debug.Log(_playerFace);
+        Debug.Log(_playerID);
         test.ChangeValue(_playerFace);
     }
 

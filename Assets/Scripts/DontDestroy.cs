@@ -3,7 +3,8 @@ using UnityEngine;
 public static class DontDestroy
 {
 
-    public static int lastPlayerID;
-    public static List<Player> players;
-    public static List<Sprite> cardSprites;
+    public static int lastPlayerID = -1;
+    //public static List<Player> players;
+    public static List<CardData> cards;
+    public static int lastActiveScene;
 }

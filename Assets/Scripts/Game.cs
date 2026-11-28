@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -72,7 +73,18 @@ public class Game : MonoBehaviour
         //}
         _instance = this;
         InitializeGame();
-        //aDontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
+        if (DontDestroy.lastPlayerID != -1)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                AllPlayers[DontDestroy.lastPlayerID].IncreaseFeatureValue("1", 1);
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                AllPlayers[DontDestroy.lastPlayerID].IncreaseFeatureValue("0", 1);
+            }
+        }
     }
     private void OnApplicationQuit()
     {

@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class CardGame : MonoBehaviour
 {
-    [SerializeField] private TestChangeSprite test;
-    private int _cardWinnerID;
-
+    SaveLoader saveLoader = new SaveLoader();
     private void Awake()
     {
-        //_cardWinnerID = DontDestroy.lastPlayerID;
+        saveLoader.Load();
+        Debug.Log(DontDestroy.lastPlayerID);
+        DontDestroy.lastActiveScene = SceneManager.GetActiveScene().buildIndex;
     }
 
 }

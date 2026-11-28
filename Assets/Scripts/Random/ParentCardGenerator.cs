@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public class ParentCardGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject _cardConteiner;
     [SerializeField] private CardView _cardView;
+    GameData gameData = new GameData();
     private List<Vector3> _cardSpawn = new List<Vector3>();
     private List<Sprite> _cardFace = new List<Sprite>();
     public List<Sprite> CardFace { get { return _cardFace; } }
@@ -13,13 +13,13 @@ public class ParentCardGenerator : MonoBehaviour
         Camera cam = Camera.main;
         Vector3 worldPosition = Camera.main.transform.position;
         Vector3 centerPos = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-        Vector3 plusPos = new Vector3(cam.orthographicSize * 2 * cam.aspect / DontDestroy.players.Count, 0f , 0f);
+        Vector3 plusPos = new Vector3(cam.orthographicSize * 2 * cam.aspect / DontDestroy.cards.Count, 0f , 0f);
         Vector3 tempworldPos = Camera.main.ScreenToWorldPoint(centerPos);
 
         Vector3 worldPos = new Vector3(tempworldPos.x, tempworldPos.y, 0f);
-        for (int i = 1; i <= Mathf.FloorToInt(DontDestroy.players.Count/2); i++)
+        for (int i = 1; i <= Mathf.FloorToInt(DontDestroy.cards.Count/2); i++)
         {
-            if (DontDestroy.players.Count % 2 != 0 && i == 1)
+            if (DontDestroy.cards.Count % 2 != 0 && i == 1)
             {
                 _cardSpawn.Add(worldPos);
             }
@@ -27,22 +27,16 @@ public class ParentCardGenerator : MonoBehaviour
             _cardSpawn.Add(worldPos + plusPos * -i);
         }
               
-        for (int i = 0; i < DontDestroy.players.Count; i++)
+        for (int i = 0; i < DontDestroy.cards.Count; i++)
         {
-           
-            AddCardView(DontDestroy.players[i], _cardSpawn[i]);
+            AddCardView(i, _cardSpawn[i]);
         }
     }
-
-    void Update()
-    {
-        
-    }
-    private void AddCardView(Player player, Vector3 cardSpawn)
+    private void AddCardView(int ID, Vector3 cardSpawn)
     {
         var view = Instantiate(_cardView, cardSpawn, Quaternion.identity);
         _cardFace.Add(view.PlayerFace);
-        DontDestroy.cardSprites = _cardFace;
-        view.CardRender(player);
+        //view.CardRender(player);
+        view.SetCardData(DontDestroy.cards[ID]);
     }
 }
